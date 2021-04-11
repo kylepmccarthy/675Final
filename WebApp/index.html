@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div id="intro">
+        <h1>Canopy View</h1>
+        <p class="main"></p>
+        <p></p>
+      </div>
+      <div id="results" style="display: none;">
+        <h1 class="day-of-week">Day of Week</h1>
+        <p class="main">Your garbage collection day is <span class="day-of-week">
+        Day of Week</span>.</p>
+        <p>Please be sure to leave your garbage outside on <span class="day-of-week">
+        Day of Week</span>. If this week is a federal holiday, leave your
+        garbage outside on the following day.</p>
+      </div>
+    </div>
+    <!-- Map -->
+    <div id="map" class="map"></div>
+    <!-- Legend -->
+    <div class="legend">
+</div>
+
+
+    <!-- Javascript Imports -->
+    <script src="js/jquery-2.2.0.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
