@@ -126,16 +126,78 @@ of the application to report/display this information.
 
 ===================== */
 
-var dataset = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/allkyle.geojson"
+var PhiladelphiaBounds = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/City_Limits.geojson"
+var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/allkyle.geojson"
 var featureGroup;
+var featureGain; 
+var featureSame; 
+var featureLoss
 
 var CanopyStyle = function(feature) {
   switch (feature.properties.CLASS_NAME) {
-    case 'Gain' : return {color: 'Green'}; 
-    case 'Loss' : return {color: 'blue'}; 
-    case 'No Change' : return {color: 'yellow'}; 
+    case 'Loss' : return {color: '#7BCBFF'}; 
+    case 'Gain' : return {color: '#0F9960'}; 
+    case 'No Change' : return {color: '#FED061'}; 
   }
 };
+
+let FilterLoss = function(feature) {
+  if (feature.properties.CLASS_NAME == "Loss" ) {
+    return true;
+  } else {
+    return false
+  }
+};
+
+let FilterGain = function(feature) {
+  if (feature.properties.CLASS_NAME == "Gain" ) {
+    return true;
+  } else {
+    return false
+  }
+};
+
+let FilterSame = function(feature) {
+  if (feature.properties.CLASS_NAME == "No Change" ) {
+    return true;
+  } else {
+    return false
+  }
+};
+
+$('input[id ="LossCheck"]').click(function () {
+  if ($('input[id ="LossCheck"]').prop('checked')) { 
+    ajaxfunc(CanopyPoly, CanopyStyle, FilterLoss)
+  }
+  else{ 
+    map.removeLayer(featureLoss) 
+  }
+});
+
+$('input[id ="GainCheck"]').click(function () {
+  if ($('input[id ="GainCheck"]').prop('checked')) { 
+    ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
+  }
+  else{ 
+    map.removeLayer(featureGain) 
+  }
+});
+
+$('input[id ="SameCheck"]').click(function () {
+  if ($('input[id ="SameCheck"]').prop('checked')) { 
+    ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
+  }
+  else{ 
+    map.removeLayer(featureSame) 
+  }
+});
+
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+
+
+
 
 
 var showResults = function() {
@@ -152,13 +214,31 @@ var showResults = function() {
 };
 
 
-$(document).ready(function() {
-  $.ajax(dataset).done(function(data) {
-    var parsedData = JSON.parse(data);
-    featureGroup = L.geoJson(parsedData, {
-      style: CanopyStyle,
-    }).addTo(map);
 
-    // quite similar to _.each
-  });
+ajaxfunc = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(data) {
+  var parsedData = JSON.parse(data);
+  featureLoss = L.geoJson(parsedData, {
+    style: mystyle,
+    filter: myfilter
+    }).addTo(map);
 });
+} 
+
+ajaxfunc1 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(data) {
+  var parsedData = JSON.parse(data);
+  featureGain = L.geoJson(parsedData, {
+    style: mystyle,
+    filter: myfilter
+    }).addTo(map);
+});
+} 
+
+ajaxfunc2 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(data) {
+  var parsedData = JSON.parse(data);
+  featureSame = L.geoJson(parsedData, {
+    style: mystyle,
+    filter: myfilter
+    }).addTo(map);
+});
+} 
+
