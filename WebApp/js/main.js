@@ -17,7 +17,7 @@ var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{
 
 var PhiladelphiaBounds = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/City_Limits.geojson"
 var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/allkyle.geojson"
-var Neighborhood = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Neighborhoods.geojson"
+var Neighborhood = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Neighborhoods2.geojson"
 var featureGroup;
 var featureGain; 
 var featureSame; 
@@ -30,6 +30,24 @@ var CanopyStyle = function(feature) {
     case 'Gain' : return {color: '#0F9960'}; 
     case 'No Change' : return {color: '#FED061'}; 
   }
+};
+
+var CoverageStyle = function(feature) {
+  if(feature.properties.AreaCoverage08 < 150000){
+  return {color: '#f7f7f7'}; 
+  }
+  if(feature.properties.AreaCoverage08 > 150000 & feature.properties.AreaCoverage08 < 800000){ 
+    return{color: '#cccccc'}
+  }
+  if(feature.properties.AreaCoverage08 > 800000 & feature.properties.AreaCoverage08 < 1750000){ 
+    return{color: '#969696'}
+  }
+  if(feature.properties.AreaCoverage08 > 1750000 & feature.properties.AreaCoverage08 < 3500000){ 
+    return{color: '#636363'}
+  }
+  if(feature.properties.AreaCoverage08 > 3500000){
+    return {color: '#252525'}; 
+    }
 };
 
 let FilterLoss = function(feature) {
@@ -84,8 +102,30 @@ $('input[id ="SameCheck"]').click(function () {
 });
 
 $( "#cov08" ).click(function() {
-  ajaxfunc(Neighborhood)
-  console.log("hi")
+  if ($('input[id ="LossCheck"]').prop('checked')) { 
+    map.removeLayer(featureLoss) 
+    ajaxfunc(Neighborhood, CoverageStyle)
+    ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
+  }
+  else {
+    ajaxfunc(Neighborhood, CoverageStyle)
+  }
+  if ($('input[id ="GainCheck"]').prop('checked')) { 
+    map.removeLayer(featureGain) 
+    ajaxfunc(Neighborhood, CoverageStyle)
+    ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
+  }
+  else {
+    ajaxfunc(Neighborhood, CoverageStyle)
+  }
+  if ($('input[id ="SameCheck"]').prop('checked')) { 
+    map.removeLayer(featureSame) 
+    ajaxfunc(Neighborhood, CoverageStyle)
+    ajaxfunc3(CanopyPoly, CanopyStyle, FilterSame)
+  }
+  else {
+    ajaxfunc(Neighborhood, CoverageStyle)
+  }
 });
 
 
@@ -110,12 +150,18 @@ var showResults = function() {
 };
 
 
-ajaxfunc = function(dataset){$.ajax(dataset).done(function(data) {
+ajaxfunc = function(dataset, myfilter){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureGroup = L.geoJson(parsedData, {
+    style: myfilter,
+    opacity: 1,
+    color: "black", 
+    fillOpacity: 0.4,
+    weight: 0.7
     }).addTo(map);
 });
 } 
+
 
 
 
