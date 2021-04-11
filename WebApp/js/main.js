@@ -18,7 +18,7 @@ var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{
 var PhiladelphiaBounds = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/City_Limits.geojson"
 var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/allkyle.geojson"
 var Neighborhood = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Neighborhoods2.geojson"
-var featureGroup;
+var featureGroups;
 var featureGain; 
 var featureSame; 
 var featureLoss
@@ -101,32 +101,39 @@ $('input[id ="SameCheck"]').click(function () {
   }
 });
 
-$( "#cov08" ).click(function() {
+var NDropDown = function(string, style){ $( string ).click(function() {
   if ($('input[id ="LossCheck"]').prop('checked')) { 
-    map.removeLayer(featureLoss) 
-    ajaxfunc(Neighborhood, CoverageStyle)
+    if(featureGroups != undefined){
+    map.removeLayer(featureGroups) } 
+    map.removeLayer(featureLoss)
+    ajaxfunc(Neighborhood, style)
     ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
   }
-  else {
-    ajaxfunc(Neighborhood, CoverageStyle)
-  }
-  if ($('input[id ="GainCheck"]').prop('checked')) { 
-    map.removeLayer(featureGain) 
-    ajaxfunc(Neighborhood, CoverageStyle)
+  else if ($('input[id ="GainCheck"]').prop('checked')) { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+    map.removeLayer(featureGain)
+    ajaxfunc(Neighborhood, style)
     ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
   }
-  else {
-    ajaxfunc(Neighborhood, CoverageStyle)
-  }
-  if ($('input[id ="SameCheck"]').prop('checked')) { 
-    map.removeLayer(featureSame) 
-    ajaxfunc(Neighborhood, CoverageStyle)
+
+  else if ($('input[id ="SameCheck"]').prop('checked')) { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+    map.removeLayer(featureSame)
+    ajaxfunc(Neighborhood, style)
     ajaxfunc3(CanopyPoly, CanopyStyle, FilterSame)
   }
-  else {
-    ajaxfunc(Neighborhood, CoverageStyle)
+  else { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+      ajaxfunc(Neighborhood, style)
   }
 });
+} 
+
+NDropDown("#cov08", CoverageStyle)
+NDropDown("#cov18", CoverageStyle)
 
 
 /* When the user clicks on the button,
@@ -150,14 +157,14 @@ var showResults = function() {
 };
 
 
-ajaxfunc = function(dataset, myfilter){$.ajax(dataset).done(function(data) {
+ajaxfunc = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
-  featureGroup = L.geoJson(parsedData, {
-    style: myfilter,
-    opacity: 1,
+  featureGroups = L.geoJson(parsedData, {
+    style: myStyle,
+    opacity: 0.1,
     color: "black", 
     fillOpacity: 0.4,
-    weight: 0.7
+    weight: 0.5
     }).addTo(map);
 });
 } 
