@@ -43,3 +43,7 @@ p.main {
 .break { 
   font-weight : bold ;
 }
+
+.link { 
+  font-size: small
+}
