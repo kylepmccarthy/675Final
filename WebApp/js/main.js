@@ -128,6 +128,7 @@ of the application to report/display this information.
 
 var PhiladelphiaBounds = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/City_Limits.geojson"
 var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/allkyle.geojson"
+var Neighborhood = ""
 var featureGroup;
 var featureGain; 
 var featureSame; 
@@ -219,7 +220,8 @@ ajaxfunc = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(da
   var parsedData = JSON.parse(data);
   featureLoss = L.geoJson(parsedData, {
     style: mystyle,
-    filter: myfilter
+    filter: myfilter, 
+    onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
 });
 } 
@@ -228,7 +230,8 @@ ajaxfunc1 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(d
   var parsedData = JSON.parse(data);
   featureGain = L.geoJson(parsedData, {
     style: mystyle,
-    filter: myfilter
+    filter: myfilter, 
+    onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
 });
 } 
@@ -237,8 +240,16 @@ ajaxfunc2 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(d
   var parsedData = JSON.parse(data);
   featureSame = L.geoJson(parsedData, {
     style: mystyle,
-    filter: myfilter
+    filter: myfilter,
+    onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
 });
+} 
+
+
+function yourOnEachFeatureFunction(feature, layer){
+  layer.bindPopup("Change Type:  " + feature.properties.CLASS_NAME + "<br>"  + 
+          "Neighborhood:  " + feature.properties.NAME + "<br>" + 
+          "Area (m^2):  " + feature.properties.Area+ "<br>" ) 
 } 
 
