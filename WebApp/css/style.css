@@ -45,5 +45,7 @@ p.main {
 }
 
 .link { 
-  font-size: small
+  font-size: small; 
+  color:  blue;
 }
+
