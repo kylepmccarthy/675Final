@@ -221,6 +221,8 @@ ajaxfunc = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(da
   featureLoss = L.geoJson(parsedData, {
     style: mystyle,
     filter: myfilter, 
+    opacity: 0.2,
+    fillOpacity: 1, 
     onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
 });
@@ -231,6 +233,8 @@ ajaxfunc1 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(d
   featureGain = L.geoJson(parsedData, {
     style: mystyle,
     filter: myfilter, 
+    opacity: 0.2,
+    fillOpacity: 1, 
     onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
 });
@@ -241,6 +245,8 @@ ajaxfunc2 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(d
   featureSame = L.geoJson(parsedData, {
     style: mystyle,
     filter: myfilter,
+    opacity: 0.2, 
+    fillOpacity: 1, 
     onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
 });

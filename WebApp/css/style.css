@@ -49,3 +49,8 @@ p.main {
   color:  blue;
 }
 
+.title { 
+  color : rgb(56, 90, 5); 
+  font-weight: bold;
+}
+
