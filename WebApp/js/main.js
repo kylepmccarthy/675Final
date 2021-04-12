@@ -50,6 +50,96 @@ var CoverageStyle = function(feature) {
     }
 };
 
+var CoverageStyle18 = function(feature) {
+  if(feature.properties.AreaCoverage18 < 150000){
+  return {color: '#f7f7f7'}; 
+  }
+  if(feature.properties.AreaCoverage18 > 150000 & feature.properties.AreaCoverage18 < 800000){ 
+    return{color: '#cccccc'}
+  }
+  if(feature.properties.AreaCoverage18 > 800000 & feature.properties.AreaCoverage18 < 1750000){ 
+    return{color: '#969696'}
+  }
+  if(feature.properties.AreaCoverage18 > 1750000 & feature.properties.AreaCoverage18 < 3500000){ 
+    return{color: '#636363'}
+  }
+  if(feature.properties.AreaCoverage18 > 3500000){
+    return {color: '#252525'}; 
+    }
+};
+
+var pctCoverageStyle = function(feature) {
+  if(feature.properties.pctCoverage08 < 5){
+  return {color: '#f7f7f7'}; 
+  }
+  if(feature.properties.pctCoverage08 > 5 & feature.properties.pctCoverage08 < 13){ 
+    return{color: '#cccccc'}
+  }
+  if(feature.properties.pctCoverage08 > 13 & feature.properties.pctCoverage08 < 21){ 
+    return{color: '#969696'}
+  }
+  if(feature.properties.pctCoverage08 > 21 & feature.properties.pctCoverage08 < 30){ 
+    return{color: '#636363'}
+  }
+  if(feature.properties.pctCoverage08 > 30){
+    return {color: '#252525'}; 
+    }
+};
+
+var pctCoverageStyle18 = function(feature) {
+  if(feature.properties.pctCoverage18 < 5){
+  return {color: '#f7f7f7'}; 
+  }
+  if(feature.properties.pctCoverage18 > 5 & feature.properties.pctCoverage18 < 13){ 
+    return{color: '#cccccc'}
+  }
+  if(feature.properties.pctCoverage18 > 13 & feature.properties.pctCoverage18 < 21){ 
+    return{color: '#969696'}
+  }
+  if(feature.properties.pctCoverage18 > 21 & feature.properties.pctCoverage18 < 30){ 
+    return{color: '#636363'}
+  }
+  if(feature.properties.pctCoverage18 > 30){
+    return {color: '#252525'}; 
+    }
+};
+
+var AreaLossN = function(feature) {
+  if(feature.properties.AreaLoss < 75000){
+  return {color: '#f7f7f7'}; 
+  }
+  if(feature.properties.AreaLoss > 75000 & feature.properties.AreaLoss < 200000){ 
+    return{color: '#cccccc'}
+  }
+  if(feature.properties.AreaLoss> 200000 & feature.properties.AreaLoss < 600000){ 
+    return{color: '#969696'}
+  }
+  if(feature.properties.AreaLoss > 600000 & feature.properties.AreaLoss < 1000000){ 
+    return{color: '#636363'}
+  }
+  if(feature.properties.AreaLoss > 1000000){
+    return {color: '#252525'}; 
+    }
+};
+
+var AreaGainN = function(feature) {
+  if(feature.properties.AreaLoss < 75000){
+  return {color: '#f7f7f7'}; 
+  }
+  if(feature.properties.AreaLoss > 75000 & feature.properties.AreaLoss < 200000){ 
+    return{color: '#cccccc'}
+  }
+  if(feature.properties.AreaLoss> 200000 & feature.properties.AreaLoss < 600000){ 
+    return{color: '#969696'}
+  }
+  if(feature.properties.AreaLoss > 600000 & feature.properties.AreaLoss < 900000){ 
+    return{color: '#636363'}
+  }
+  if(feature.properties.AreaLoss > 900000){
+    return {color: '#252525'}; 
+    }
+};
+
 let FilterLoss = function(feature) {
   if (feature.properties.CLASS_NAME == "Loss" ) {
     return true;
@@ -122,7 +212,7 @@ var NDropDown = function(string, style){ $( string ).click(function() {
       map.removeLayer(featureGroups) } 
     map.removeLayer(featureSame)
     ajaxfunc(Neighborhood, style)
-    ajaxfunc3(CanopyPoly, CanopyStyle, FilterSame)
+    ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
   }
   else { 
     if(featureGroups != undefined){
@@ -133,7 +223,11 @@ var NDropDown = function(string, style){ $( string ).click(function() {
 } 
 
 NDropDown("#cov08", CoverageStyle)
-NDropDown("#cov18", CoverageStyle)
+NDropDown("#cov18", CoverageStyle18)
+NDropDown("#pctCov08", pctCoverageStyle)
+NDropDown("#pctCove18", pctCoverageStyle18)
+NDropDown("#lostTrees", AreaLossN)
+NDropDown("#gainedTrees", AreaGainN)
 
 
 /* When the user clicks on the button,
@@ -161,10 +255,9 @@ ajaxfunc = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureGroups = L.geoJson(parsedData, {
     style: myStyle,
-    opacity: 0.1,
-    color: "black", 
-    fillOpacity: 0.4,
-    weight: 0.5
+    color: "red", 
+    fillOpacity: 1,
+    weight: 3,
     }).addTo(map);
 });
 } 
@@ -177,7 +270,8 @@ ajaxfunc3 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(d
   featureLoss = L.geoJson(parsedData, {
     style: mystyle,
     filter: myfilter, 
-    opacity: 0.2,
+    opacity: 1,
+    color: "red", 
     fillOpacity: 1, 
     onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
