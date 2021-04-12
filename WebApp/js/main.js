@@ -34,109 +34,109 @@ var CanopyStyle = function(feature) {
 
 var CoverageStyle = function(feature) {
   if(feature.properties.AreaCoverage08 < 150000){
-  return {color: '#f7f7f7'}; 
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaCoverage08 > 150000 & feature.properties.AreaCoverage08 < 800000){ 
-    return{color: '#cccccc'}
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaCoverage08 > 800000 & feature.properties.AreaCoverage08 < 1750000){ 
-    return{color: '#969696'}
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaCoverage08 > 1750000 & feature.properties.AreaCoverage08 < 3500000){ 
-    return{color: '#636363'}
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaCoverage08 > 3500000){
-    return {color: '#252525'}; 
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
 
 var CoverageStyle18 = function(feature) {
   if(feature.properties.AreaCoverage18 < 150000){
-  return {color: '#f7f7f7'}; 
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaCoverage18 > 150000 & feature.properties.AreaCoverage18 < 800000){ 
-    return{color: '#cccccc'}
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaCoverage18 > 800000 & feature.properties.AreaCoverage18 < 1750000){ 
-    return{color: '#969696'}
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaCoverage18 > 1750000 & feature.properties.AreaCoverage18 < 3500000){ 
-    return{color: '#636363'}
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaCoverage18 > 3500000){
-    return {color: '#252525'}; 
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
 
 var pctCoverageStyle = function(feature) {
   if(feature.properties.pctCoverage08 < 5){
-  return {color: '#f7f7f7'}; 
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctCoverage08 > 5 & feature.properties.pctCoverage08 < 13){ 
-    return{color: '#cccccc'}
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctCoverage08 > 13 & feature.properties.pctCoverage08 < 21){ 
-    return{color: '#969696'}
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctCoverage08 > 21 & feature.properties.pctCoverage08 < 30){ 
-    return{color: '#636363'}
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctCoverage08 > 30){
-    return {color: '#252525'}; 
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
 
 var pctCoverageStyle18 = function(feature) {
   if(feature.properties.pctCoverage18 < 5){
-  return {color: '#f7f7f7'}; 
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctCoverage18 > 5 & feature.properties.pctCoverage18 < 13){ 
-    return{color: '#cccccc'}
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctCoverage18 > 13 & feature.properties.pctCoverage18 < 21){ 
-    return{color: '#969696'}
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctCoverage18 > 21 & feature.properties.pctCoverage18 < 30){ 
-    return{color: '#636363'}
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctCoverage18 > 30){
-    return {color: '#252525'}; 
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
 
 var AreaLossN = function(feature) {
   if(feature.properties.AreaLoss < 75000){
-  return {color: '#f7f7f7'}; 
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaLoss > 75000 & feature.properties.AreaLoss < 200000){ 
-    return{color: '#cccccc'}
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaLoss> 200000 & feature.properties.AreaLoss < 600000){ 
-    return{color: '#969696'}
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaLoss > 600000 & feature.properties.AreaLoss < 1000000){ 
-    return{color: '#636363'}
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaLoss > 1000000){
-    return {color: '#252525'}; 
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'}; 
     }
 };
 
 var AreaGainN = function(feature) {
   if(feature.properties.AreaLoss < 75000){
-  return {color: '#f7f7f7'}; 
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaLoss > 75000 & feature.properties.AreaLoss < 200000){ 
-    return{color: '#cccccc'}
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaLoss> 200000 & feature.properties.AreaLoss < 600000){ 
-    return{color: '#969696'}
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaLoss > 600000 & feature.properties.AreaLoss < 900000){ 
-    return{color: '#636363'}
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaLoss > 900000){
-    return {color: '#252525'}; 
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
 
