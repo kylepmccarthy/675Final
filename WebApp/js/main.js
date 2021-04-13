@@ -140,6 +140,24 @@ var AreaGainN = function(feature) {
     }
 };
 
+var AreaGainN = function(feature) {
+  if(feature.properties.AreaLoss < 75000){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaLoss > 75000 & feature.properties.AreaLoss < 200000){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaLoss> 200000 & feature.properties.AreaLoss < 600000){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaLoss > 600000 & feature.properties.AreaLoss < 900000){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaLoss > 900000){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
 let FilterLoss = function(feature) {
   if (feature.properties.CLASS_NAME == "Loss" ) {
     return true;
@@ -272,7 +290,7 @@ ajaxfunc3 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(d
     filter: myfilter, 
     opacity: 1,
     color: "red", 
-    fillOpacity: 1, 
+    fillOpacity: 1.5, 
     onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
 });
@@ -283,8 +301,8 @@ ajaxfunc1 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(d
   featureGain = L.geoJson(parsedData, {
     style: mystyle,
     filter: myfilter, 
-    opacity: 0.2,
-    fillOpacity: 1, 
+    opacity: 1,
+    fillOpacity: 1.5, 
     onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
 });
@@ -295,8 +313,8 @@ ajaxfunc2 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(d
   featureSame = L.geoJson(parsedData, {
     style: mystyle,
     filter: myfilter,
-    opacity: 0.2, 
-    fillOpacity: 1, 
+    opacity: 1, 
+    fillOpacity: 1.5, 
     onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
 });
