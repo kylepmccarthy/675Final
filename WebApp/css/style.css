@@ -42,6 +42,7 @@ p.main {
 
 .break { 
   font-weight : bold ;
+  top: 15px
 }
 
 .link { 
@@ -76,3 +77,12 @@ p.main {
   border: none;
   box-shadow: none;
   }
+
+  #left-panel-link {
+    position: absolute;
+    top: 22px;
+    left: 20px;
+  }
+
+
+

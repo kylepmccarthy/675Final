@@ -33,46 +33,46 @@ var CanopyStyle = function(feature) {
 };
 
 var CoverageStyle = function(feature) {
-  if(feature.properties.AreaCoverage08 < 150000){
+  if(feature.properties.AreaCoverage08 < 2080000){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaCoverage08 > 150000 & feature.properties.AreaCoverage08 < 800000){ 
+  if(feature.properties.AreaCoverage08 > 2080000 & feature.properties.AreaCoverage08 < 4766600){ 
     return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaCoverage08 > 800000 & feature.properties.AreaCoverage08 < 1750000){ 
+  if(feature.properties.AreaCoverage08 > 4766600& feature.properties.AreaCoverage08 < 8960000){ 
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaCoverage08 > 1750000 & feature.properties.AreaCoverage08 < 3500000){ 
+  if(feature.properties.AreaCoverage08 > 8960000 & feature.properties.AreaCoverage08 < 14183000){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaCoverage08 > 3500000){
+  if(feature.properties.AreaCoverage08 > 14183000){
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
 
 var CoverageStyle18 = function(feature) {
-  if(feature.properties.AreaCoverage18 < 150000){
+  if(feature.properties.AreaCoverage08 < 2080000){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaCoverage18 > 150000 & feature.properties.AreaCoverage18 < 800000){ 
+  if(feature.properties.AreaCoverage08 > 2080000 & feature.properties.AreaCoverage08 < 4766600){ 
     return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaCoverage18 > 800000 & feature.properties.AreaCoverage18 < 1750000){ 
+  if(feature.properties.AreaCoverage08 > 4766600& feature.properties.AreaCoverage08 < 8960000){ 
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaCoverage18 > 1750000 & feature.properties.AreaCoverage18 < 3500000){ 
+  if(feature.properties.AreaCoverage08 > 8960000 & feature.properties.AreaCoverage08 < 14183000){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaCoverage18 > 3500000){
+  if(feature.properties.AreaCoverage08 > 14183000){
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
 
 var pctCoverageStyle = function(feature) {
-  if(feature.properties.pctCoverage08 < 5){
+  if(feature.properties.pctCoverage08 < 7){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.pctCoverage08 > 5 & feature.properties.pctCoverage08 < 13){ 
+  if(feature.properties.pctCoverage08 > 7 & feature.properties.pctCoverage08 < 13){ 
     return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctCoverage08 > 13 & feature.properties.pctCoverage08 < 21){ 
@@ -87,76 +87,131 @@ var pctCoverageStyle = function(feature) {
 };
 
 var pctCoverageStyle18 = function(feature) {
-  if(feature.properties.pctCoverage18 < 5){
+  if(feature.properties.pctCoverage08 < 7){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.pctCoverage18 > 5 & feature.properties.pctCoverage18 < 13){ 
+  if(feature.properties.pctCoverage08 > 7 & feature.properties.pctCoverage08 < 13){ 
     return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.pctCoverage18 > 13 & feature.properties.pctCoverage18 < 21){ 
+  if(feature.properties.pctCoverage08 > 13 & feature.properties.pctCoverage08 < 21){ 
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.pctCoverage18 > 21 & feature.properties.pctCoverage18 < 30){ 
+  if(feature.properties.pctCoverage08 > 21 & feature.properties.pctCoverage08 < 30){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.pctCoverage18 > 30){
+  if(feature.properties.pctCoverage08 > 30){
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
 
 var AreaLossN = function(feature) {
-  if(feature.properties.AreaLoss < 75000){
+  if(feature.properties.AreaLoss < 500000){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss > 75000 & feature.properties.AreaLoss < 200000){ 
+  if(feature.properties.AreaLoss > 500000 & feature.properties.AreaLoss < 1126500){ 
     return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss> 200000 & feature.properties.AreaLoss < 600000){ 
+  if(feature.properties.AreaLoss> 1126500 & feature.properties.AreaLoss < 2100000){ 
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss > 600000 & feature.properties.AreaLoss < 1000000){ 
+  if(feature.properties.AreaLoss > 2100000 & feature.properties.AreaLoss < 3500000){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss > 1000000){
+  if(feature.properties.AreaLoss > 3500000){
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'}; 
     }
 };
 
 var AreaGainN = function(feature) {
-  if(feature.properties.AreaLoss < 75000){
+  if(feature.properties.AreaGain < 250000){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss > 75000 & feature.properties.AreaLoss < 200000){ 
+  if(feature.properties.AreaGain > 250000 & feature.properties.AreaGain < 560000){ 
     return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss> 200000 & feature.properties.AreaLoss < 600000){ 
+  if(feature.properties.AreaGain> 560000 & feature.properties.AreaGain < 1030000){ 
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss > 600000 & feature.properties.AreaLoss < 900000){ 
+  if(feature.properties.AAreaGain > 1030000 & feature.properties.AreaGain < 1635000){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss > 900000){
+  if(feature.properties.AreaGain > 1635000){
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
 
-var AreaGainN = function(feature) {
-  if(feature.properties.AreaLoss < 75000){
+var NetChangeN = function(feature) {
+  if(feature.properties.GainMinusLoss < -2007700){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss > 75000 & feature.properties.AreaLoss < 200000){ 
+  if(feature.properties.GainMinusLoss > -2007700 & feature.properties.GainMinusLoss < -886000){ 
     return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss> 200000 & feature.properties.AreaLoss < 600000){ 
+  if(feature.properties.GainMinusLoss> -886000 & feature.properties.GainMinusLoss< -283500){ 
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss > 600000 & feature.properties.AreaLoss < 900000){ 
+  if(feature.properties.GainMinusLoss > -283500 & feature.properties.GainMinusLoss< 0){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AreaLoss > 900000){
+  if(feature.properties.GainMinusLoss > 0){
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
+
+var pctLossN = function(feature) {
+  if(feature.properties.pctLoss < 15){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctLoss > 15 & feature.properties.pctLoss < 21){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctLoss> 21 & feature.properties.pctLoss < 27){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctLoss > 27 & feature.properties.pctLoss < 36){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctLoss > 36){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
+var pctGainN = function(feature) {
+  if(feature.properties.pctGain < 10){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctGain > 10 & feature.properties.pctGain < 16){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctGain> 16 & feature.properties.pctGain < 22){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pcGain > 22 & feature.properties.pctGain < 30){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctGain > 30){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
+var pctChangeN = function(feature) {
+  if(feature.properties.pctChange < -24){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctChange > -24 & feature.properties.pctChange < -11){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctChange> -11 & feature.properties.pctChange < 0){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctChange > 0 & feature.properties.pctChange < 8){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctChange > 8){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
 
 let FilterLoss = function(feature) {
   if (feature.properties.CLASS_NAME == "Loss" ) {
@@ -209,7 +264,7 @@ $('input[id ="SameCheck"]').click(function () {
   }
 });
 
-var NDropDown = function(string, style){ $( string ).click(function() {
+var NDropDown1 = function(string, style){ $( string ).click(function() {
   if ($('input[id ="LossCheck"]').prop('checked')) { 
     if(featureGroups != undefined){
     map.removeLayer(featureGroups) } 
@@ -217,15 +272,33 @@ var NDropDown = function(string, style){ $( string ).click(function() {
     ajaxfunc(Neighborhood, style)
     ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
   }
-  else if ($('input[id ="GainCheck"]').prop('checked')) { 
+  else { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+      ajaxfunc(Neighborhood, style)
+  }
+});
+} 
+
+var NDropDown2 = function(string, style){ $( string ).click(function() {
+  if ($('input[id ="GainCheck"]').prop('checked')) { 
     if(featureGroups != undefined){
       map.removeLayer(featureGroups) } 
     map.removeLayer(featureGain)
     ajaxfunc(Neighborhood, style)
     ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
   }
+  else { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+      ajaxfunc(Neighborhood, style)
+  }
+});
+} 
 
-  else if ($('input[id ="SameCheck"]').prop('checked')) { 
+
+var NDropDown3 = function(string, style){ $( string ).click(function() {
+  if (($('input[id ="SameCheck"]').prop('checked'))) { 
     if(featureGroups != undefined){
       map.removeLayer(featureGroups) } 
     map.removeLayer(featureSame)
@@ -240,19 +313,45 @@ var NDropDown = function(string, style){ $( string ).click(function() {
 });
 } 
 
-NDropDown("#cov08", CoverageStyle)
-NDropDown("#cov18", CoverageStyle18)
-NDropDown("#pctCov08", pctCoverageStyle)
-NDropDown("#pctCove18", pctCoverageStyle18)
-NDropDown("#lostTrees", AreaLossN)
-NDropDown("#gainedTrees", AreaGainN)
 
+NDropDown1("#cov08", CoverageStyle)
+NDropDown1("#cov18", CoverageStyle18)
+NDropDown1("#pctCov08", pctCoverageStyle)
+NDropDown1("#pctCove18", pctCoverageStyle18)
+NDropDown1("#lostTrees", AreaLossN)
+NDropDown1("#gainedTrees", AreaGainN)
+NDropDown1("#NetChange", NetChangeN)
+NDropDown1("#pctLoss", pctLossN)
+NDropDown1("#pctGain", pctLossN)
+NDropDown1("#pctChange", pctLossN)
+NDropDown2("#cov08", CoverageStyle)
+NDropDown2("#cov18", CoverageStyle18)
+NDropDown2("#pctCov08", pctCoverageStyle)
+NDropDown2("#pctCove18", pctCoverageStyle18)
+NDropDown2("#lostTrees", AreaLossN)
+NDropDown2("#gainedTrees", AreaGainN)
+NDropDown2("#pctLoss", pctLossN)
+NDropDown2("#pctGain", pctLossN)
+NDropDown2("#pctChange", pctLossN)
+NDropDown2("#NetChange", NetChangeN)
+NDropDown3("#cov08", CoverageStyle)
+NDropDown3("#cov18", CoverageStyle18)
+NDropDown3("#pctCov08", pctCoverageStyle)
+NDropDown3("#pctCove18", pctCoverageStyle18)
+NDropDown3("#lostTrees", AreaLossN)
+NDropDown3("#gainedTrees", AreaGainN)
+NDropDown3("#NetChange", NetChangeN)
+NDropDown3("#pctLoss", pctLossN)
+NDropDown3("#pctGain", pctLossN)
+NDropDown3("#pctChange", pctLossN)
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 
 
-
+$('#clearMap').on('click', function(e) {
+  map.removeLayer(featureGroups)
+});
 
 
 var showResults = function() {
@@ -276,6 +375,7 @@ ajaxfunc = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
     color: "red", 
     fillOpacity: 1,
     weight: 3,
+    onEachFeature: onEachFeatureStats
     }).addTo(map);
 });
 } 
@@ -327,3 +427,15 @@ function yourOnEachFeatureFunction(feature, layer){
           "Area (m^2):  " + feature.properties.Area+ "<br>" ) 
 } 
 
+function onEachFeatureStats(feature, layer) { 
+  layer.bindPopup("2008 Tree Canopy Coverage:  " + feature.properties.AreaCoverage08 + "<br>" + 
+  "2018 Tree Canopy Coverage:  " + feature.properties.AreaCoverage18 + "<br>" + 
+  "2008 Percent Tree Coverage:  " + feature.properties.pctCoverage08 + "<br>" + 
+  "2018 Percent Tree Coverage:  " + feature.properties.pctCoverage18 + "<br>" + 
+  "Area Lost:  " + feature.properties.AreaLoss + "<br>" + 
+  "Area Gained:  "+ feature.properties.AreaGain + "<br>" + 
+  "Net Change:  " + feature.properties.GainMinusLoss + "<br>" + 
+  "Percent Loss:  " + feature.properties.pctLoss + "<br>" + 
+  "Precent Gain:  " + feature.properties.pctGain + "<br>" + 
+  "Percent Change: "+ feature.properties.pctChange)
+}
