@@ -18,7 +18,9 @@ var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{
 var PhiladelphiaBounds = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/City_Limits.geojson"
 var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/allkyle.geojson"
 var Neighborhood = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Neighborhoods2.geojson"
+var Grid = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/gridFinal2.geojson"
 var featureGroups;
+var featureGroups1; 
 var featureGain; 
 var featureSame; 
 var featureLoss
@@ -50,6 +52,25 @@ var CoverageStyle = function(feature) {
     }
 };
 
+var CoverageStyle08F = function(feature) {
+  if(feature.properties.AreaCoverage08 < 141000){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaCoverage08 > 141000 & feature.properties.AreaCoverage08 < 318000){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaCoverage08 > 318000 & feature.properties.AreaCoverage08 < 553000){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaCoverage08 > 553000 & feature.properties.AreaCoverage08 < 935800){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaCoverage08 > 553000){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
+
 var CoverageStyle18 = function(feature) {
   if(feature.properties.AreaCoverage08 < 2080000){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
@@ -64,6 +85,24 @@ var CoverageStyle18 = function(feature) {
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaCoverage08 > 14183000){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
+var CoverageStyle18F = function(feature) {
+  if(feature.properties.AreaCoverage18 < 141000){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaCoverage18 > 141000 & feature.properties.AreaCoverage18 < 318000){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaCoverage18 > 318000 & feature.properties.AreaCoverage18 < 553000){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaCoverage18 > 553000 & feature.properties.AreaCoverage18 < 935800){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaCoverage18 > 553000){
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
@@ -85,6 +124,8 @@ var pctCoverageStyle = function(feature) {
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
+
+
 
 var pctCoverageStyle18 = function(feature) {
   if(feature.properties.pctCoverage08 < 7){
@@ -122,6 +163,24 @@ var AreaLossN = function(feature) {
     }
 };
 
+var AreaLossF = function(feature) {
+  if(feature.properties.AreaLoss < 43200){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaLoss > 43200 & feature.properties.AreaLoss < 98000){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaLoss> 98000 & feature.properties.AreaLoss < 164900){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaLoss > 164900 & feature.properties.AreaLoss < 362900){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaLoss > 362900){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'}; 
+    }
+};
+
 var AreaGainN = function(feature) {
   if(feature.properties.AreaGain < 250000){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
@@ -140,6 +199,24 @@ var AreaGainN = function(feature) {
     }
 };
 
+var AreaGainF = function(feature) {
+  if(feature.properties.AreaGain < 24300){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaGain > 24300 & feature.properties.AreaGain < 52850){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaGain> 52850 & feature.properties.AreaGain < 89000){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AAreaGain > 89000 & feature.properties.AreaGain < 145800){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.AreaGain > 145800){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
 var NetChangeN = function(feature) {
   if(feature.properties.GainMinusLoss < -2007700){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
@@ -151,6 +228,24 @@ var NetChangeN = function(feature) {
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.GainMinusLoss > -283500 & feature.properties.GainMinusLoss< 0){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.GainMinusLoss > 0){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
+var NetChangeF = function(feature) {
+  if(feature.properties.GainMinusLoss < -63400){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.GainMinusLoss > -63400 & feature.properties.GainMinusLoss < -31670){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.GainMinusLoss> -31670 & feature.properties.GainMinusLoss< -7280){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.GainMinusLoss > -7280 & feature.properties.GainMinusLoss< 0){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.GainMinusLoss > 0){
@@ -176,6 +271,24 @@ var pctLossN = function(feature) {
     }
 };
 
+var pctLossF = function(feature) {
+  if(feature.properties.pctLoss < 10){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctLoss > 10 & feature.properties.pctLoss < 22){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctLoss> 22 & feature.properties.pctLoss < 34){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctLoss > 34 & feature.properties.pctLoss < 52){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctLoss > 52){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
 var pctGainN = function(feature) {
   if(feature.properties.pctGain < 10){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
@@ -190,6 +303,24 @@ var pctGainN = function(feature) {
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.pctGain > 30){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
+var pctGainF = function(feature) {
+  if(feature.properties.pctGain < 8){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctGain > 8 & feature.properties.pctGain < 18){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctGain> 18 & feature.properties.pctGain < 31){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pcGain > 31 & feature.properties.pctGain < 52){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctGain > 52){
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
@@ -212,9 +343,27 @@ var pctChangeN = function(feature) {
     }
 };
 
+var pctChangeF = function(feature) {
+  if(feature.properties.pctChange < -17){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctChange > -17 & feature.properties.pctChange < -10){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctChange> -11 & feature.properties.pctChange < -4){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctChange > -4 & feature.properties.pctChange < 0){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.pctChange > 0){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
+
 
 let FilterLoss = function(feature) {
-  if (feature.properties.CLASS_NAME == "Loss" ) {
+  if (feature.properties.CLASS_NAME == "Loss" & AreaCoverage08 > 0 ) {
     return true;
   } else {
     return false
@@ -222,7 +371,7 @@ let FilterLoss = function(feature) {
 };
 
 let FilterGain = function(feature) {
-  if (feature.properties.CLASS_NAME == "Gain" ) {
+  if (feature.properties.CLASS_NAME == "Gain" & AreaCoverage08 > 0 ) {
     return true;
   } else {
     return false
@@ -230,7 +379,7 @@ let FilterGain = function(feature) {
 };
 
 let FilterSame = function(feature) {
-  if (feature.properties.CLASS_NAME == "No Change" ) {
+  if (feature.properties.CLASS_NAME == "No Change" & AreaCoverage08 > 0 ) {
     return true;
   } else {
     return false
@@ -264,93 +413,109 @@ $('input[id ="SameCheck"]').click(function () {
   }
 });
 
-var NDropDown1 = function(string, style){ $( string ).click(function() {
-  if ($('input[id ="LossCheck"]').prop('checked')) { 
+var NDropDown1 = function(string, style, dataset){ $( string ).click(function() {
+  if ($('input[id ="LossCheck"]').prop('checked') == true & $('input[id ="GainCheck"]').prop('checked') == true & $('input[id ="SameCheck"]').prop('checked') == true)  { 
     if(featureGroups != undefined){
     map.removeLayer(featureGroups) } 
     map.removeLayer(featureLoss)
-    ajaxfunc(Neighborhood, style)
-    ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
-  }
-  else { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
-      ajaxfunc(Neighborhood, style)
-  }
-});
-} 
-
-var NDropDown2 = function(string, style){ $( string ).click(function() {
-  if ($('input[id ="GainCheck"]').prop('checked')) { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
     map.removeLayer(featureGain)
-    ajaxfunc(Neighborhood, style)
-    ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
-  }
-  else { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
-      ajaxfunc(Neighborhood, style)
-  }
-});
-} 
-
-
-var NDropDown3 = function(string, style){ $( string ).click(function() {
-  if (($('input[id ="SameCheck"]').prop('checked'))) { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
     map.removeLayer(featureSame)
-    ajaxfunc(Neighborhood, style)
+    ajaxfunc(dataset, style)
+    ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
+    ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
     ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
   }
-  else { 
+  else if ($('input[id ="LossCheck"]').prop('checked') == true & $('input[id ="GainCheck"]').prop('checked') == true & $('input[id ="SameCheck"]').prop('checked') == false) { 
     if(featureGroups != undefined){
       map.removeLayer(featureGroups) } 
-      ajaxfunc(Neighborhood, style)
+      map.removeLayer(featureLoss)
+      map.removeLayer(featureGain)
+      ajaxfunc(dataset, style)
+      ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
+      ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
+  }
+  else if ($('input[id ="LossCheck"]').prop('checked') == true & $('input[id ="GainCheck"]').prop('checked') == false & $('input[id ="SameCheck"]').prop('checked') == true) { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+      map.removeLayer(featureLoss)
+      map.removeLayer(featureSame) 
+      ajaxfunc(dataset, style)
+      ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
+      ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
+  }
+  else if ($('input[id ="LossCheck"]').prop('checked') == false & $('input[id ="GainCheck"]').prop('checked') == true & $('input[id ="SameCheck"]').prop('checked') == true) { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+      map.removeLayer(featureGain) 
+      map.removeLayer(featureSame)
+      ajaxfunc(dataset, style)
+      ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
+      ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
+  }
+  else if ($('input[id ="LossCheck"]').prop('checked') == false & $('input[id ="GainCheck"]').prop('checked') == false & $('input[id ="SameCheck"]').prop('checked') == true) { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+      map.removeLayer(featureSame)
+      ajaxfunc(dataset, style)
+      ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
+  }
+  else if ($('input[id ="LossCheck"]').prop('checked') == false & $('input[id ="GainCheck"]').prop('checked') == true & $('input[id ="SameCheck"]').prop('checked') == false) { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+      map.removeLayer(featureGain) 
+      ajaxfunc(dataset, style)
+      ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
+  }
+  else if ($('input[id ="LossCheck"]').prop('checked') == true & $('input[id ="GainCheck"]').prop('checked') == false & $('input[id ="SameCheck"]').prop('checked') == false) { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) } 
+      map.removeLayer(featureLoss) 
+      ajaxfunc(dataset, style)
+      ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
+  }
+  else { 
+    if(featureGroups != undefined){
+      map.removeLayer(featureGroups) 
+    } 
+      ajaxfunc(dataset, style)
   }
 });
 } 
 
+NDropDown1("#cov08", CoverageStyle, Neighborhood)
+NDropDown1("#cov18", CoverageStyle18,  Neighborhood)
+NDropDown1("#pctCov08", pctCoverageStyle, Neighborhood)
+NDropDown1("#pctCove18", pctCoverageStyle18, Neighborhood)
+NDropDown1("#lostTrees", AreaLossN, Neighborhood)
+NDropDown1("#gainedTrees", AreaGainN, Neighborhood)
+NDropDown1("#NetChange", NetChangeN, Neighborhood)
+NDropDown1("#pctLoss", pctLossN, Neighborhood)
+NDropDown1("#pctGain", pctLossN, Neighborhood)
+NDropDown1("#pctChange", pctLossN, Neighborhood)
 
-NDropDown1("#cov08", CoverageStyle)
-NDropDown1("#cov18", CoverageStyle18)
-NDropDown1("#pctCov08", pctCoverageStyle)
-NDropDown1("#pctCove18", pctCoverageStyle18)
-NDropDown1("#lostTrees", AreaLossN)
-NDropDown1("#gainedTrees", AreaGainN)
-NDropDown1("#NetChange", NetChangeN)
-NDropDown1("#pctLoss", pctLossN)
-NDropDown1("#pctGain", pctLossN)
-NDropDown1("#pctChange", pctLossN)
-NDropDown2("#cov08", CoverageStyle)
-NDropDown2("#cov18", CoverageStyle18)
-NDropDown2("#pctCov08", pctCoverageStyle)
-NDropDown2("#pctCove18", pctCoverageStyle18)
-NDropDown2("#lostTrees", AreaLossN)
-NDropDown2("#gainedTrees", AreaGainN)
-NDropDown2("#pctLoss", pctLossN)
-NDropDown2("#pctGain", pctLossN)
-NDropDown2("#pctChange", pctLossN)
-NDropDown2("#NetChange", NetChangeN)
-NDropDown3("#cov08", CoverageStyle)
-NDropDown3("#cov18", CoverageStyle18)
-NDropDown3("#pctCov08", pctCoverageStyle)
-NDropDown3("#pctCove18", pctCoverageStyle18)
-NDropDown3("#lostTrees", AreaLossN)
-NDropDown3("#gainedTrees", AreaGainN)
-NDropDown3("#NetChange", NetChangeN)
-NDropDown3("#pctLoss", pctLossN)
-NDropDown3("#pctGain", pctLossN)
-NDropDown3("#pctChange", pctLossN)
+
+
+NDropDown1("#cov08F", CoverageStyle08F, Grid)
+NDropDown1("#cov18F", CoverageStyle18F,  Grid)
+NDropDown1("#pctCov08F", pctCoverageStyle, Grid)
+NDropDown1("#pctCove18F", pctCoverageStyle18, Grid)
+NDropDown1("#lostTreesF", AreaLossF, Grid)
+NDropDown1("#gainedTreesF", AreaGainF, Grid)
+NDropDown1("#NetChangeF", NetChangeF, Grid)
+NDropDown1("#pctLossF", pctLossF, Grid)
+NDropDown1("#pctGainF", pctLossF, Grid)
+NDropDown1("#pctChangeF", pctLossF, Grid)
+
+
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 
 
 $('#clearMap').on('click', function(e) {
+  if (featureGroups != undefined){ 
   map.removeLayer(featureGroups)
+  } 
 });
 
 
@@ -380,6 +545,17 @@ ajaxfunc = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
 });
 } 
 
+ajaxfunc4 = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
+  var parsedData = JSON.parse(data);
+  featureGroups1 = L.geoJson(parsedData, {
+    style: myStyle,
+    color: "red", 
+    fillOpacity: 1,
+    weight: 3,
+    onEachFeature: onEachFeatureStats
+    }).addTo(map);
+});
+} 
 
 
 
@@ -389,7 +565,6 @@ ajaxfunc3 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(d
     style: mystyle,
     filter: myfilter, 
     opacity: 1,
-    color: "red", 
     fillOpacity: 1.5, 
     onEachFeature: yourOnEachFeatureFunction, 
     }).addTo(map);
