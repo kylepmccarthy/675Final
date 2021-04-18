@@ -80,8 +80,14 @@ p.main {
 
   #left-panel-link {
     position: absolute;
-    top: 22px;
-    left: 20px;
+    top: 8px;
+    left: 9px;
+  }
+
+  #clearMap{
+    position: absolute;
+    top: 345px;
+    left: 25px;
   }
 
 
