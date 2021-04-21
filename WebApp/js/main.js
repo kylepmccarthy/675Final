@@ -361,9 +361,16 @@ var pctChangeF = function(feature) {
     }
 };
 
+let FilterMain = function(feature) {
+  if (feature.properties.pctCoverage08 == 0 | feature.properties.pctLoss == 0 | feature.properties.pctGain == 0) {
+    return false;
+  } else {
+    return true; 
+  }
+};
 
 let FilterLoss = function(feature) {
-  if (feature.properties.CLASS_NAME == "Loss" & AreaCoverage08 > 0 ) {
+  if (feature.properties.CLASS_NAME == "Loss" ) {
     return true;
   } else {
     return false
@@ -371,7 +378,7 @@ let FilterLoss = function(feature) {
 };
 
 let FilterGain = function(feature) {
-  if (feature.properties.CLASS_NAME == "Gain" & AreaCoverage08 > 0 ) {
+  if (feature.properties.CLASS_NAME == "Gain" ) {
     return true;
   } else {
     return false
@@ -379,7 +386,7 @@ let FilterGain = function(feature) {
 };
 
 let FilterSame = function(feature) {
-  if (feature.properties.CLASS_NAME == "No Change" & AreaCoverage08 > 0 ) {
+  if (feature.properties.CLASS_NAME == "No Change" ) {
     return true;
   } else {
     return false
@@ -540,23 +547,11 @@ ajaxfunc = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
     color: "red", 
     fillOpacity: 1,
     weight: 3,
+    filter: FilterMain, 
     onEachFeature: onEachFeatureStats
     }).addTo(map);
 });
 } 
-
-ajaxfunc4 = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
-  var parsedData = JSON.parse(data);
-  featureGroups1 = L.geoJson(parsedData, {
-    style: myStyle,
-    color: "red", 
-    fillOpacity: 1,
-    weight: 3,
-    onEachFeature: onEachFeatureStats
-    }).addTo(map);
-});
-} 
-
 
 
 ajaxfunc3 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(data) {
