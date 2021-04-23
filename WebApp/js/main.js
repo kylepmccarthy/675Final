@@ -20,11 +20,11 @@ var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/
 var Neighborhood = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Neighborhoods2.geojson"
 var Grid = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/gridFinal2.geojson"
 
-var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricR2.geojson"
-var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationR.geojson"
-var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NewConstR.geojson"
-var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR.geojson"
-var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR.geojson"
+var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricR3.geojson"
+var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationR3.geojson"
+var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NewConstR3.geojson"
+var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR3.geojson"
+var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR3.geojson"
 
 var featureGroups; 
 var featureEL;
@@ -436,7 +436,7 @@ let FilterSame = function(feature) {
 
 $('input[id ="ELCheck"]').click(function () {
   if ($('input[id ="ELCheck"]').prop('checked')) { 
-    ajaxEL(electric, ElectricStyle, FilterYear1)
+    ajaxEL(electric, ElectricStyle)
   }
   else{ 
     map.removeLayer(featureEL)
@@ -445,7 +445,7 @@ $('input[id ="ELCheck"]').click(function () {
 
 $('input[id ="NCCheck"]').click(function () {
   if ($('input[id ="NCCheck"]').prop('checked')) { 
-    ajaxNC(newconst, newStyle, FilterYear1)
+    ajaxNC(newconst, newStyle)
   }
   else{ 
     map.removeLayer(featureNC)
@@ -454,7 +454,7 @@ $('input[id ="NCCheck"]').click(function () {
 
 $('input[id ="DEMCheck"]').click(function () {
   if ($('input[id ="DEMCheck"]').prop('checked')) { 
-    ajaxDEMO(demolition, DeomoStyle, FilterYear1)
+    ajaxDEMO(demolition, DeomoStyle)
   }
   else{ 
     map.removeLayer(featureDEMO)
@@ -463,7 +463,7 @@ $('input[id ="DEMCheck"]').click(function () {
 
 $('input[id ="ALTCheck"]').click(function () {
   if ($('input[id ="ALTCheck"]').prop('checked')) { 
-    ajaxALT(alteration, AltStyle, FilterYear1)
+    ajaxALT(alteration, AltStyle)
   }
   else{ 
     map.removeLayer(featureALT)
@@ -472,7 +472,7 @@ $('input[id ="ALTCheck"]').click(function () {
 
 $('input[id ="ADDCheck"]').click(function () {
   if ($('input[id ="ADDCheck"]').prop('checked')) { 
-    ajaxADD(addition, AddStyle, FilterYear1)
+    ajaxADD(addition, AddStyle)
   }
   else{ 
     map.removeLayer(featureADD) 
