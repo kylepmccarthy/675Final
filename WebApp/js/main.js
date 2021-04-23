@@ -19,20 +19,52 @@ var PhiladelphiaBounds = "https://raw.githubusercontent.com/kylepmccarthy/675Fin
 var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/allkyle.geojson"
 var Neighborhood = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Neighborhoods2.geojson"
 var Grid = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/gridFinal2.geojson"
-var featureGroups;
-var featureGroups1; 
-var featureGain; 
-var featureSame; 
-var featureLoss
+
+var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electric.geojson"
+var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alteration.geojson"
+var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NewConst.geojson"
+var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Add.geojson"
+var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/demol.geojson"
+
+var featureGroups; 
+var featureEL;
+var featureALT; 
+var featureNC; 
+var featureADD; 
+var featureDEMO; 
 
 
-var CanopyStyle = function(feature) {
-  switch (feature.properties.CLASS_NAME) {
-    case 'Loss' : return {color: '#7BCBFF'}; 
-    case 'Gain' : return {color: '#0F9960'}; 
-    case 'No Change' : return {color: '#FED061'}; 
+var ElectricStyle = function(feature) {
+  switch (feature.properties.permitdescription) {
+    case 'ELECTRICAL PERMIT' : return {color: '#beaed4'};
   }
 };
+
+var DeomoStyle = function(feature) {
+  switch (feature.properties.permitdescription) {
+    case 'DEMOLITION PERMIT' : return {color: '#7fc97f'};
+  }
+};
+
+var AltStyle = function(feature) {
+  switch (feature.properties.permitdescription) {
+    case 'ALTERATION PERMIT' : return {color: '#fdc086'};
+  }
+};
+
+var AddStyle = function(feature) {
+  switch (feature.properties.permitdescription) {
+    case 'ADDITION PERMIT' : return {color: '#A38A00'};
+  }
+};
+
+
+var newStyle = function(feature) {
+  switch (feature.properties.permitdescription) {
+    case 'NEW CONSTRUCTION PERMIT' : return {color: '#386cb0'};
+  }
+};
+
 
 var CoverageStyle = function(feature) {
   if(feature.properties.AreaCoverage08 < 2080000){
@@ -369,13 +401,6 @@ let FilterMain = function(feature) {
   }
 };
 
-let FilterLoss = function(feature) {
-  if (feature.properties.CLASS_NAME == "Loss" ) {
-    return true;
-  } else {
-    return false
-  }
-};
 
 let FilterGain = function(feature) {
   if (feature.properties.CLASS_NAME == "Gain" ) {
@@ -393,99 +418,56 @@ let FilterSame = function(feature) {
   }
 };
 
-$('input[id ="LossCheck"]').click(function () {
-  if ($('input[id ="LossCheck"]').prop('checked')) { 
-    ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
+$('input[id ="ELCheck"]').click(function () {
+  if ($('input[id ="ELCheck"]').prop('checked')) { 
+    ajaxEL(electric, ElectricStyle)
   }
   else{ 
-    map.removeLayer(featureLoss) 
+    map.removeLayer(featureEL)
   }
 });
 
-$('input[id ="GainCheck"]').click(function () {
-  if ($('input[id ="GainCheck"]').prop('checked')) { 
-    ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
+$('input[id ="NCCheck"]').click(function () {
+  if ($('input[id ="NCCheck"]').prop('checked')) { 
+    ajaxNC(newconst, newStyle)
   }
   else{ 
-    map.removeLayer(featureGain) 
+    map.removeLayer(featureNC)
   }
 });
 
-$('input[id ="SameCheck"]').click(function () {
-  if ($('input[id ="SameCheck"]').prop('checked')) { 
-    ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
+$('input[id ="DEMCheck"]').click(function () {
+  if ($('input[id ="DEMCheck"]').prop('checked')) { 
+    ajaxDEMO(demolition, DeomoStyle)
   }
   else{ 
-    map.removeLayer(featureSame) 
+    map.removeLayer(featureDEMO)
   }
 });
 
-var NDropDown1 = function(string, style, dataset){ $( string ).click(function() {
-  if ($('input[id ="LossCheck"]').prop('checked') == true & $('input[id ="GainCheck"]').prop('checked') == true & $('input[id ="SameCheck"]').prop('checked') == true)  { 
-    if(featureGroups != undefined){
-    map.removeLayer(featureGroups) } 
-    map.removeLayer(featureLoss)
-    map.removeLayer(featureGain)
-    map.removeLayer(featureSame)
-    ajaxfunc(dataset, style)
-    ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
-    ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
-    ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
+$('input[id ="ALTCheck"]').click(function () {
+  if ($('input[id ="ALTCheck"]').prop('checked')) { 
+    ajaxALT(alteration, AltStyle)
   }
-  else if ($('input[id ="LossCheck"]').prop('checked') == true & $('input[id ="GainCheck"]').prop('checked') == true & $('input[id ="SameCheck"]').prop('checked') == false) { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
-      map.removeLayer(featureLoss)
-      map.removeLayer(featureGain)
-      ajaxfunc(dataset, style)
-      ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
-      ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
+  else{ 
+    map.removeLayer(featureALT)
   }
-  else if ($('input[id ="LossCheck"]').prop('checked') == true & $('input[id ="GainCheck"]').prop('checked') == false & $('input[id ="SameCheck"]').prop('checked') == true) { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
-      map.removeLayer(featureLoss)
-      map.removeLayer(featureSame) 
-      ajaxfunc(dataset, style)
-      ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
-      ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
+});
+
+$('input[id ="ADDCheck"]').click(function () {
+  if ($('input[id ="ADDCheck"]').prop('checked')) { 
+    ajaxADD(addition, AddStyle)
   }
-  else if ($('input[id ="LossCheck"]').prop('checked') == false & $('input[id ="GainCheck"]').prop('checked') == true & $('input[id ="SameCheck"]').prop('checked') == true) { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
-      map.removeLayer(featureGain) 
-      map.removeLayer(featureSame)
-      ajaxfunc(dataset, style)
-      ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
-      ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
+  else{ 
+    map.removeLayer(featureADD) 
   }
-  else if ($('input[id ="LossCheck"]').prop('checked') == false & $('input[id ="GainCheck"]').prop('checked') == false & $('input[id ="SameCheck"]').prop('checked') == true) { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
-      map.removeLayer(featureSame)
-      ajaxfunc(dataset, style)
-      ajaxfunc2(CanopyPoly, CanopyStyle, FilterSame)
-  }
-  else if ($('input[id ="LossCheck"]').prop('checked') == false & $('input[id ="GainCheck"]').prop('checked') == true & $('input[id ="SameCheck"]').prop('checked') == false) { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
-      map.removeLayer(featureGain) 
-      ajaxfunc(dataset, style)
-      ajaxfunc1(CanopyPoly, CanopyStyle, FilterGain)
-  }
-  else if ($('input[id ="LossCheck"]').prop('checked') == true & $('input[id ="GainCheck"]').prop('checked') == false & $('input[id ="SameCheck"]').prop('checked') == false) { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) } 
-      map.removeLayer(featureLoss) 
-      ajaxfunc(dataset, style)
-      ajaxfunc3(CanopyPoly, CanopyStyle, FilterLoss)
-  }
-  else { 
-    if(featureGroups != undefined){
-      map.removeLayer(featureGroups) 
-    } 
-      ajaxfunc(dataset, style)
-  }
+});
+
+
+var NDropDown1 = function(string, style, dataset, layer){ $( string ).click(function() {
+  if(featureGroups != undefined){
+    map.removeLayer(featureGroups) }  
+  ajaxfunc(dataset, style)
 });
 } 
 
@@ -512,6 +494,8 @@ NDropDown1("#NetChangeF", NetChangeF, Grid)
 NDropDown1("#pctLossF", pctLossF, Grid)
 NDropDown1("#pctGainF", pctLossF, Grid)
 NDropDown1("#pctChangeF", pctLossF, Grid)
+
+
 
 
 
@@ -550,45 +534,83 @@ ajaxfunc = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
     filter: FilterMain, 
     onEachFeature: onEachFeatureStats
     }).addTo(map);
+    featureGroups.bringToBack(); 
 });
 } 
 
-
-ajaxfunc3 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(data) {
+ajaxEL = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
-  featureLoss = L.geoJson(parsedData, {
+  featureEL = L.geoJson(parsedData, {
+    size : 0.3, 
     style: mystyle,
-    filter: myfilter, 
-    opacity: 1,
-    fillOpacity: 1.5, 
-    onEachFeature: yourOnEachFeatureFunction, 
-    }).addTo(map);
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, 
+          {radius: 1})
+    }
+}).addTo(map) 
 });
 } 
 
-ajaxfunc1 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(data) {
+ajaxALT = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
-  featureGain = L.geoJson(parsedData, {
+  featureALT = L.geoJson(parsedData, {
+    size : 0.3, 
     style: mystyle,
-    filter: myfilter, 
-    opacity: 1,
-    fillOpacity: 1.5, 
-    onEachFeature: yourOnEachFeatureFunction, 
-    }).addTo(map);
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, 
+          {radius: 1})
+    }
+}).addTo(map) 
 });
 } 
 
-ajaxfunc2 = function(dataset, mystyle, myfilter){$.ajax(dataset).done(function(data) {
+ajaxADD = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
-  featureSame = L.geoJson(parsedData, {
+  featureADD = L.geoJson(parsedData, {
+    size : 0.3, 
     style: mystyle,
-    filter: myfilter,
-    opacity: 1, 
-    fillOpacity: 1.5, 
-    onEachFeature: yourOnEachFeatureFunction, 
-    }).addTo(map);
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, 
+          {radius: 1})
+    }
+}).addTo(map) 
 });
 } 
+
+ajaxDEMO = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
+  var parsedData = JSON.parse(data);
+  featureDEMO = L.geoJson(parsedData, {
+    size : 0.3, 
+    style: mystyle,
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, 
+          {radius: 1})
+    }
+}).addTo(map) 
+});
+} 
+
+ajaxNC = function(dataset, mystyle){$.ajax(dataset).done(function(data) {
+  var parsedData = JSON.parse(data);
+  featureNC = L.geoJson(parsedData, {
+    size : 0.3, 
+    style: mystyle,
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, 
+          {radius: 1})
+    }
+}).addTo(map) 
+});
+} 
+
+
+var age = document.getElementById("year").value;
+
+$('#Filter').on('click', function(e) {
+  var x = document.getElementById("year").value;
+  console.log(x) 
+  
+});
 
 
 function yourOnEachFeatureFunction(feature, layer){

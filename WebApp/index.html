@@ -17,14 +17,17 @@
       <div id="intro">
         <div class = "title"> <h1>Canopy View</h1></div> 
         <div class = "allPoly"> 
-          <h6> <form><input id= "LossCheck" type= "checkbox"/>    View Tree Canopy Loss (Areas greater than 500 m^2)</h6></form>
-          <h6> <form><input id= "GainCheck" type= "checkbox"/>    View Tree Canopy Gains (Areas greater than 500 m^2)</h6></form>
-          <h6> <form><input id= "SameCheck" type= "checkbox"/>    View Tree Canopy No Change (Areas greater than 500 m^2)</h6></form> 
-          <div class = "link"> <a href="https://phillytrees.azavea.com/" target="_blank" rel="noopener noreferrer">Click to view the Tree Canopy Change in more detail!</a></div>
+          <h5> <form><input id= "ELCheck" type= "checkbox"/>    Electric Permits</h5></form>
+          <h5> <form><input id= "NCCheck" type= "checkbox"/>    New Construction Permit</h5></form>
+          <h5> <form><input id= "DEMCheck" type= "checkbox"/>    Demolition Permits</h5></form> 
+          <h5> <form><input id= "ALTCheck" type= "checkbox"/>   Alteration Permits </h5></form> 
+          <h5> <form><input id= "ADDCheck" type= "checkbox"/>   Addition Permits </h5></form> 
+          <form>
+            <input type="text" id="year" name="year"><br>
+          </form>
+          <div> <button type="button" id = "Filter" class="btn btn-dark">Filter By Year</button></div>
         </div> 
-        <div class = "break"> 
-          <h2> _____________________ </h2>
-        </div> 
+        <div class = "break"> ________________________________________</div>
         <div class="container">
           <div class="row">
               <div class="btn-group">
@@ -66,8 +69,9 @@
                 </ul>
               </div>
             </div>
-              <div style="top:350px;"> <button type="button" id = "clearMap" class="btn btn-dark">Clear Statistics</button>
+              <div> <button type="button" id = "clearMap" class="btn btn-dark">Clear Statistics</button>
             </div>
+            <div class = "link"> <a href="https://phillytrees.azavea.com/" target="_blank" rel="noopener noreferrer">Click to view the Tree Canopy Change in more detail!</a></div>
           </div>
         </div>
         <p></p>
@@ -75,8 +79,9 @@
     <!-- Map -->
     <div id="map" class="map"></div>
     <!-- Legend -->
-    <div class="legend">
+    
 </div>
+
 
 
     <!-- Javascript Imports -->
