@@ -20,7 +20,7 @@ var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/
 var Neighborhood = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Neighborhoods2.geojson"
 var Grid = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/gridFinal2.geojson"
 
-var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricR.geojson"
+var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricR2.geojson"
 var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationR.geojson"
 var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NewConstR.geojson"
 var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR.geojson"
@@ -402,6 +402,22 @@ let FilterMain = function(feature) {
 };
 
 
+let FilterYear1 = function(feature) {
+  if (feature.properties.year <= 2018 ) {
+    return true;
+  } else {
+    return false
+  }
+};
+
+let FilterYear2 = function(feature) {
+  if (feature.properties.year <= 2019 ) {
+    return true;
+  } else {
+    return false
+  }
+};
+
 let FilterGain = function(feature) {
   if (feature.properties.CLASS_NAME == "Gain" ) {
     return true;
@@ -420,7 +436,7 @@ let FilterSame = function(feature) {
 
 $('input[id ="ELCheck"]').click(function () {
   if ($('input[id ="ELCheck"]').prop('checked')) { 
-    ajaxEL(electric, ElectricStyle)
+    ajaxEL(electric, ElectricStyle, FilterYear1)
   }
   else{ 
     map.removeLayer(featureEL)
@@ -429,7 +445,7 @@ $('input[id ="ELCheck"]').click(function () {
 
 $('input[id ="NCCheck"]').click(function () {
   if ($('input[id ="NCCheck"]').prop('checked')) { 
-    ajaxNC(newconst, newStyle)
+    ajaxNC(newconst, newStyle, FilterYear1)
   }
   else{ 
     map.removeLayer(featureNC)
@@ -438,7 +454,7 @@ $('input[id ="NCCheck"]').click(function () {
 
 $('input[id ="DEMCheck"]').click(function () {
   if ($('input[id ="DEMCheck"]').prop('checked')) { 
-    ajaxDEMO(demolition, DeomoStyle)
+    ajaxDEMO(demolition, DeomoStyle, FilterYear1)
   }
   else{ 
     map.removeLayer(featureDEMO)
@@ -447,7 +463,7 @@ $('input[id ="DEMCheck"]').click(function () {
 
 $('input[id ="ALTCheck"]').click(function () {
   if ($('input[id ="ALTCheck"]').prop('checked')) { 
-    ajaxALT(alteration, AltStyle)
+    ajaxALT(alteration, AltStyle, FilterYear1)
   }
   else{ 
     map.removeLayer(featureALT)
@@ -456,7 +472,7 @@ $('input[id ="ALTCheck"]').click(function () {
 
 $('input[id ="ADDCheck"]').click(function () {
   if ($('input[id ="ADDCheck"]').prop('checked')) { 
-    ajaxADD(addition, AddStyle)
+    ajaxADD(addition, AddStyle, FilterYear1)
   }
   else{ 
     map.removeLayer(featureADD) 
@@ -543,6 +559,7 @@ ajaxEL = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data
   featureEL = L.geoJson(parsedData, {
     size : 0.8, 
     style: mystyle,
+    filter: variable, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
@@ -556,6 +573,7 @@ ajaxALT = function(dataset, mystyle, variable){$.ajax(dataset).done(function(dat
   featureALT = L.geoJson(parsedData, {
     size : 0.8, 
     style: mystyle,
+    filter: variable, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
@@ -569,6 +587,7 @@ ajaxADD = function(dataset, mystyle, variable){$.ajax(dataset).done(function(dat
   featureADD = L.geoJson(parsedData, {
     size : 0.8, 
     style: mystyle,
+    filter: variable, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
@@ -582,6 +601,7 @@ ajaxDEMO = function(dataset, mystyle, variable){$.ajax(dataset).done(function(da
   featureDEMO = L.geoJson(parsedData, {
     size : 0.8, 
     style: mystyle,
+    filter: variable, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
@@ -590,11 +610,12 @@ ajaxDEMO = function(dataset, mystyle, variable){$.ajax(dataset).done(function(da
 });
 } 
 
-ajaxNC = function(dataset, mystyle){$.ajax(dataset).done(function(data) {
+ajaxNC = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureNC = L.geoJson(parsedData, {
     size : 0.8, 
     style: mystyle,
+    filter: variable, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
