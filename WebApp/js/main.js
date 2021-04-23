@@ -541,7 +541,7 @@ ajaxfunc = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
 ajaxEL = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureEL = L.geoJson(parsedData, {
-    size : 0.3, 
+    size : 0.8, 
     style: mystyle,
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
@@ -554,7 +554,7 @@ ajaxEL = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data
 ajaxALT = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureALT = L.geoJson(parsedData, {
-    size : 0.3, 
+    size : 0.8, 
     style: mystyle,
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
@@ -567,7 +567,7 @@ ajaxALT = function(dataset, mystyle, variable){$.ajax(dataset).done(function(dat
 ajaxADD = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureADD = L.geoJson(parsedData, {
-    size : 0.3, 
+    size : 0.8, 
     style: mystyle,
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
@@ -580,7 +580,7 @@ ajaxADD = function(dataset, mystyle, variable){$.ajax(dataset).done(function(dat
 ajaxDEMO = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureDEMO = L.geoJson(parsedData, {
-    size : 0.3, 
+    size : 0.8, 
     style: mystyle,
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
@@ -593,7 +593,7 @@ ajaxDEMO = function(dataset, mystyle, variable){$.ajax(dataset).done(function(da
 ajaxNC = function(dataset, mystyle){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureNC = L.geoJson(parsedData, {
-    size : 0.3, 
+    size : 0.8, 
     style: mystyle,
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
@@ -608,8 +608,13 @@ var age = document.getElementById("year").value;
 
 $('#Filter').on('click', function(e) {
   var x = document.getElementById("year").value;
-  console.log(x) 
-  
+  let FilterYear= function(feature) {
+    if (feature.properties.Year == 0) {
+      return false;
+    } else {
+      return true; 
+    }
+  };
 });
 
 
