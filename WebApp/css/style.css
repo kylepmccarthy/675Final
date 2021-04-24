@@ -113,6 +113,27 @@ p.main {
     left: 230px;
   }
 
+  #CON19 { 
+    position: absolute; 
+    top: 156px ; 
+    left : 130px; 
+  }
+
+  .active {
+    background-color: green !important;
+  }
+
+  .break1 { 
+    position: absolute; 
+    top: 475px; 
+    font-weight: bold; 
+  }
+
+  .container1 { 
+    position: absolute; 
+    top: 525px; 
+  }
+
 
 
 

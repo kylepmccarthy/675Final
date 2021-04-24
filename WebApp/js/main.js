@@ -20,11 +20,12 @@ var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/
 var Neighborhood = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Neighborhoods2.geojson"
 var Grid = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/gridFinal2.geojson"
 
-var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricR3.geojson"
-var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationR3.geojson"
+var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPRE.geojson"
+var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPRE.geojson"
 var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NewConstR3.geojson"
 var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR3.geojson"
 var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR3.geojson"
+var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/construction-scenarios.geojson"
 
 var featureGroups; 
 var featureEL;
@@ -401,6 +402,49 @@ let FilterMain = function(feature) {
   }
 };
 
+let FilterResults2 = function(feature) {
+  if (feature.properties.Scenario == 'const_25less') {
+    return false;
+  } else {
+    return true; 
+  }
+};
+
+let FilterResults1 = function(feature) {
+  if (feature.properties.Scenario == 'const_50less') {
+    return false;
+  } else {
+    return true; 
+  }
+};
+
+let FilterResults3 = function(feature) {
+  if (feature.properties.Scenario == 'const_original') {
+    return false;
+  } else {
+    return true; 
+  }
+};
+
+let FilterResults4 = function(feature) {
+  if (feature.properties.Scenario == 'const_25more') {
+    return false;
+  } else {
+    return true; 
+  }
+};
+
+let FilterResults5 = function(feature) {
+  if (feature.properties.Scenario == 'const_50more') {
+    return false;
+  } else {
+    return true; 
+  }
+};
+
+
+
+
 
 let FilterYear1 = function(feature) {
   if (feature.properties.year <= 2018 ) {
@@ -483,7 +527,7 @@ $('input[id ="ADDCheck"]').click(function () {
 var NDropDown1 = function(string, style, dataset, layer){ $( string ).click(function() {
   if(featureGroups != undefined){
     map.removeLayer(featureGroups) }  
-  ajaxfunc(dataset, style)
+  ajaxfunc(dataset, style, FilterMain)
 });
 } 
 
@@ -510,6 +554,12 @@ NDropDown1("#NetChangeF", NetChangeF, Grid)
 NDropDown1("#pctLossF", pctLossF, Grid)
 NDropDown1("#pctGainF", pctLossF, Grid)
 NDropDown1("#pctChangeF", pctLossF, Grid)
+
+NDropDown1("#S1", pctLossF, results)
+NDropDown1("#S2", pctLossF, results)
+NDropDown1("#S3", pctLossF, results)
+NDropDown1("#S4", pctLossF, results)
+NDropDown1("#S5", pctLossF, results)
 
 
 
@@ -540,14 +590,14 @@ var showResults = function() {
 };
 
 
-ajaxfunc = function(dataset, myStyle){$.ajax(dataset).done(function(data) {
+ajaxfunc = function(dataset, myStyle, myFilter){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureGroups = L.geoJson(parsedData, {
     style: myStyle,
     color: "red", 
     fillOpacity: 1,
     weight: 3,
-    filter: FilterMain, 
+    filter: myFilter, 
     onEachFeature: onEachFeatureStats
     }).addTo(map);
     featureGroups.bringToBack(); 
@@ -625,17 +675,27 @@ ajaxNC = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data
 } 
 
 
-var age = document.getElementById("year").value;
 
 $('#Filter').on('click', function(e) {
   var x = document.getElementById("year").value;
   let FilterYear= function(feature) {
-    if (feature.properties.Year == 0) {
-      return false;
+    if (feature.properties.Year == x) {
+      return true;
     } else {
-      return true; 
+      return false; 
     }
   };
+
+});
+
+$('#CON0818').click(function(){
+  $("button").removeClass("active");
+  $(this).addClass("active");
+});
+
+$('#CON19').click(function(){
+  $("button").removeClass("active");
+  $(this).addClass("active");
 });
 
 
