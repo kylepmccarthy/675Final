@@ -20,14 +20,14 @@ var CanopyPoly = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/
 var Neighborhood = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Neighborhoods2.geojson"
 var Grid = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/gridFinal2.geojson"
 
-var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPRE.geojson"
-var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPRE.geojson"
-var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NC2.geojson"
-var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR3.geojson"
-var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR4.geojson"
+var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPRE2.geojson"
+var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPRE2.geojson"
+var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NC3.geojson"
+var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR4.geojson"
+var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR5.geojson"
 var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/scenarios.geojson"
-var electric1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPOSTS.geojson"
-var alteration1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPOST.geojson"
+var electric1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPOST2.geojson"
+var alteration1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPOST2.geojson"
 
 var featureGroups; 
 var featureEL;
