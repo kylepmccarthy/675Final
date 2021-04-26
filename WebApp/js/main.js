@@ -26,6 +26,8 @@ var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Da
 var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR3.geojson"
 var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR4.geojson"
 var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/scenarios.geojson"
+var electric1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPOSTS.geojson"
+var alteration1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPOST.geojson"
 
 var featureGroups; 
 var featureEL;
@@ -496,7 +498,12 @@ let FilterSame = function(feature) {
 
 $('input[id ="ELCheck"]').click(function () {
   if ($('input[id ="ELCheck"]').prop('checked')) { 
-    ajaxEL(electric, ElectricStyle)
+    if(i == 0) {
+       ajaxEL(electric, ElectricStyle)
+    } 
+    else{ 
+      ajaxEL(electric1, ElectricStyle)
+    }
   }
   else{ 
     map.removeLayer(featureEL)
@@ -533,7 +540,12 @@ $('input[id ="DEMCheck"]').click(function () {
 
 $('input[id ="ALTCheck"]').click(function () {
   if ($('input[id ="ALTCheck"]').prop('checked')) { 
-    ajaxALT(alteration, AltStyle)
+    if(i == 0) { 
+      ajaxALT(alteration, AltStyle)
+    } 
+    else{ 
+      ajaxALT(alteration1, AltStyle)
+    }
   }
   else{ 
     map.removeLayer(featureALT)
@@ -723,6 +735,14 @@ $('#CON0818').click(function(){
     map.removeLayer(featureADD); 
     ajaxADD(addition, AddStyle, FilterYear)
   }
+  if(map.hasLayer(featureALT)){ 
+    map.removeLayer(featureALT); 
+    ajaxALT(alteration, AltStyle, FilterYear)
+  }
+  if(map.hasLayer(featureEL)){ 
+    map.removeLayer(featureEL); 
+    ajaxEL(electric, ElectricStyle, FilterYear)
+  }
 });
 
 $('#CON19').click(function(){
@@ -740,6 +760,14 @@ $('#CON19').click(function(){
   if(map.hasLayer(featureADD)){ 
     map.removeLayer(featureADD); 
     ajaxADD(addition, AddStyle, FilterYear2)
+  }
+  if(map.hasLayer(featureALT)){ 
+    map.removeLayer(featureALT); 
+    ajaxALT(alteration1, AltStyle, FilterYear2)
+  }
+  if(map.hasLayer(featureEL)){ 
+    map.removeLayer(featureEL); 
+    ajaxEL(electric1, ElectricStyle, FilterYear2)
   }
 });
 
