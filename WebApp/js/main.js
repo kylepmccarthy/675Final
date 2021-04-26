@@ -22,12 +22,14 @@ var Grid = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/g
 
 var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPRE2.geojson"
 var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPRE2.geojson"
+var plum = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/PlumPre.geojson"
 var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NC3.geojson"
 var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR4.geojson"
 var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR5.geojson"
 var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/scenarios.geojson"
 var electric1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPOST2.geojson"
 var alteration1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPOST2.geojson"
+var plum2 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/PlumPost2.geojson "
 
 var featureGroups; 
 var featureEL;
@@ -40,6 +42,12 @@ var featureDEMO;
 var ElectricStyle = function(feature) {
   switch (feature.properties.permitdescription) {
     case 'ELECTRICAL PERMIT' : return {color: '#beaed4'};
+  }
+};
+
+var PlumStyle = function(feature) {
+  switch (feature.properties.permitdescription) {
+    case 'PLUMBING PERMIT' : return {color: '#bf5b17'};
   }
 };
 
@@ -566,6 +574,20 @@ $('input[id ="ADDCheck"]').click(function () {
   }
 });
 
+$('input[id ="PCheck"]').click(function () {
+  if ($('input[id ="PCheck"]').prop('checked')) { 
+    if(i == 0) { 
+    ajaxP(plum, PlumStyle)
+    } 
+    else { 
+      ajaxP(plum, PlumStyle)
+    }
+  }
+  else{ 
+    map.removeLayer(featureP) 
+  }
+});
+
 
 var NDropDown1 = function(string, style, dataset, Filter, pop){ $( string ).click(function() {
   if(featureGroups != undefined){
@@ -728,6 +750,21 @@ ajaxNC = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data
 });
 } 
 
+ajaxP = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
+  var parsedData = JSON.parse(data);
+  featureP = L.geoJson(parsedData, {
+    size : 0.8, 
+    style: mystyle,
+    filter: variable, 
+    onEachFeature: onEachFeatureConst, 
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, 
+          {radius: 1})
+    }
+}).addTo(map) 
+});
+} 
+
 let i = 0; 
 
 $('#CON0818').click(function(){
@@ -754,6 +791,10 @@ $('#CON0818').click(function(){
     map.removeLayer(featureEL); 
     ajaxEL(electric, ElectricStyle, FilterYear)
   }
+  if(map.hasLayer(featureP)){ 
+    map.removeLayer(featureP); 
+    ajaxP(plum, PlumStyle)
+  }
 });
 
 $('#CON19').click(function(){
@@ -779,6 +820,10 @@ $('#CON19').click(function(){
   if(map.hasLayer(featureEL)){ 
     map.removeLayer(featureEL); 
     ajaxEL(electric1, ElectricStyle, FilterYear2)
+  }
+  if(map.hasLayer(featureP)){ 
+    map.removeLayer(featureP); 
+    ajaxP(plum2, PlumStyle)
   }
 });
 
