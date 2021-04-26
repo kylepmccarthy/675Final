@@ -36,6 +36,10 @@ var featureNC;
 var featureADD; 
 var featureDEMO; 
 
+$(window).on('load', function() {
+  $('#modal').modal('show');
+});
+
 
 var ElectricStyle = function(feature) {
   switch (feature.properties.permitdescription) {
@@ -567,42 +571,42 @@ $('input[id ="ADDCheck"]').click(function () {
 });
 
 
-var NDropDown1 = function(string, style, dataset, Filter){ $( string ).click(function() {
+var NDropDown1 = function(string, style, dataset, Filter, pop){ $( string ).click(function() {
   if(featureGroups != undefined){
     map.removeLayer(featureGroups) }  
-  ajaxfunc(dataset, style, Filter)
+  ajaxfunc(dataset, style, Filter, pop)
 });
 } 
 
-NDropDown1("#cov08", CoverageStyle, Neighborhood, FilterMain)
-NDropDown1("#cov18", CoverageStyle18,  Neighborhood, FilterMain)
-NDropDown1("#pctCov08", pctCoverageStyle, Neighborhood, FilterMain)
-NDropDown1("#pctCove18", pctCoverageStyle18, Neighborhood, FilterMain)
-NDropDown1("#lostTrees", AreaLossN, Neighborhood, FilterMain)
-NDropDown1("#gainedTrees", AreaGainN, Neighborhood, FilterMain)
-NDropDown1("#NetChange", NetChangeN, Neighborhood, FilterMain)
-NDropDown1("#pctLoss", pctLossN, Neighborhood, FilterMain)
-NDropDown1("#pctGain", pctLossN, Neighborhood, FilterMain)
-NDropDown1("#pctChange", pctLossN, Neighborhood, FilterMain)
+NDropDown1("#cov08", CoverageStyle, Neighborhood, FilterMain, onEachFeatureStats)
+NDropDown1("#cov18", CoverageStyle18,  Neighborhood, FilterMain, onEachFeatureStats)
+NDropDown1("#pctCov08", pctCoverageStyle, Neighborhood, FilterMain, onEachFeatureStats)
+NDropDown1("#pctCove18", pctCoverageStyle18, Neighborhood, FilterMain, onEachFeatureStats)
+NDropDown1("#lostTrees", AreaLossN, Neighborhood, FilterMain), onEachFeatureStats
+NDropDown1("#gainedTrees", AreaGainN, Neighborhood, FilterMain, onEachFeatureStats)
+NDropDown1("#NetChange", NetChangeN, Neighborhood, FilterMain, onEachFeatureStats)
+NDropDown1("#pctLoss", pctLossN, Neighborhood, FilterMain, onEachFeatureStats)
+NDropDown1("#pctGain", pctLossN, Neighborhood, FilterMain, onEachFeatureStats)
+NDropDown1("#pctChange", pctLossN, Neighborhood, FilterMain, onEachFeatureStats)
 
 
 
-NDropDown1("#cov08F", CoverageStyle08F, Grid, FilterMain)
-NDropDown1("#cov18F", CoverageStyle18F,  Grid, FilterMain)
-NDropDown1("#pctCov08F", pctCoverageStyle, Grid, FilterMain)
-NDropDown1("#pctCove18F", pctCoverageStyle18, Grid, FilterMain)
-NDropDown1("#lostTreesF", AreaLossF, Grid, FilterMain)
-NDropDown1("#gainedTreesF", AreaGainF, Grid, FilterMain)
-NDropDown1("#NetChangeF", NetChangeF, Grid, FilterMain)
-NDropDown1("#pctLossF", pctLossF, Grid, FilterMain)
-NDropDown1("#pctGainF", pctLossF, Grid, FilterMain)
-NDropDown1("#pctChangeF", pctLossF, Grid, FilterMain)
+NDropDown1("#cov08F", CoverageStyle08F, Grid, FilterMain, onEachFeatureStats1)
+NDropDown1("#cov18F", CoverageStyle18F,  Grid, FilterMain, onEachFeatureStats1)
+NDropDown1("#pctCov08F", pctCoverageStyle, Grid, FilterMain, onEachFeatureStats1)
+NDropDown1("#pctCove18F", pctCoverageStyle18, Grid, FilterMain, onEachFeatureStats1)
+NDropDown1("#lostTreesF", AreaLossF, Grid, FilterMain, onEachFeatureStats1)
+NDropDown1("#gainedTreesF", AreaGainF, Grid, FilterMain, onEachFeatureStats1)
+NDropDown1("#NetChangeF", NetChangeF, Grid, FilterMain, onEachFeatureStats1)
+NDropDown1("#pctLossF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
+NDropDown1("#pctGainF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
+NDropDown1("#pctChangeF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
 
-NDropDown1("#S1", ResultStyle, results, FilterResults1)
-NDropDown1("#S2", ResultStyle, results, FilterResults2)
-NDropDown1("#S3", ResultStyle, results, FilterResults3)
-NDropDown1("#S4", ResultStyle, results, FilterResults4)
-NDropDown1("#S5", ResultStyle, results, FilterResults5)
+NDropDown1("#S1", ResultStyle, results, FilterResults1, onEachFeatureStats2)
+NDropDown1("#S2", ResultStyle, results, FilterResults2, onEachFeatureStats2)
+NDropDown1("#S3", ResultStyle, results, FilterResults3, onEachFeatureStats2)
+NDropDown1("#S4", ResultStyle, results, FilterResults4, onEachFeatureStats2)
+NDropDown1("#S5", ResultStyle, results, FilterResults5, onEachFeatureStats2)
 
 
 
@@ -641,7 +645,7 @@ ajaxfunc = function(dataset, myStyle, myFilter, oneach){$.ajax(dataset).done(fun
     fillOpacity: 1,
     weight: 3,
     filter: myFilter, 
-    onEachFeature: onEachFeatureStats2,
+    onEachFeature: oneach,
     }).addTo(map);
     featureGroups.bringToBack(); 
 });
@@ -779,7 +783,8 @@ function yourOnEachFeatureFunction(feature, layer){
 } 
 
 function onEachFeatureStats(feature, layer) { 
-  layer.bindPopup("2008 Tree Canopy Coverage:  " + feature.properties.AreaCoverage08 + "<br>" + 
+  layer.bindPopup("Neighborhood: " + feature.properties.LISTNAME + "<br>" + 
+    "2008 Tree Canopy Coverage:  " + feature.properties.AreaCoverage08 + "<br>" + 
   "2018 Tree Canopy Coverage:  " + feature.properties.AreaCoverage18 + "<br>" + 
   "2008 Percent Tree Coverage:  " + feature.properties.pctCoverage08 + "<br>" + 
   "2018 Percent Tree Coverage:  " + feature.properties.pctCoverage18 + "<br>" + 
@@ -791,6 +796,22 @@ function onEachFeatureStats(feature, layer) {
   "Percent Change: "+ feature.properties.pctChange)
 }
 
+function onEachFeatureStats1(feature, layer) { 
+  layer.bindPopup(
+    "2008 Tree Canopy Coverage:  " + feature.properties.AreaCoverage08 + "<br>" + 
+  "2018 Tree Canopy Coverage:  " + feature.properties.AreaCoverage18 + "<br>" + 
+  "2008 Percent Tree Coverage:  " + feature.properties.pctCoverage08 + "<br>" + 
+  "2018 Percent Tree Coverage:  " + feature.properties.pctCoverage18 + "<br>" + 
+  "Area Lost:  " + feature.properties.AreaLoss + "<br>" + 
+  "Area Gained:  "+ feature.properties.AreaGain + "<br>" + 
+  "Net Change:  " + feature.properties.GainMinusLoss + "<br>" + 
+  "Percent Loss:  " + feature.properties.pctLoss + "<br>" + 
+  "Precent Gain:  " + feature.properties.pctGain + "<br>" + 
+  "Percent Change: "+ feature.properties.pctChange)
+}
+
+
 function onEachFeatureStats2(feature, layer) { 
-  layer.bindPopup("Probaility: " + feature.properties.Probs + "<br>") 
+  layer.bindPopup("Probaility of Significant Tree Loss: " + feature.properties.Probs + "<br>" + 
+  "Tree Loss Severity: " + feature.properties.Risk_Cat + "<br>") 
 }
