@@ -664,10 +664,11 @@ $('#clearMap').on('click', function(e) {
 });
 
 $('#MapOn').on('click', function(e) {
+  if(featureGroups != undefined){ 
   if (map.hasLayer(featureGroups) == false){ 
   map.addLayer(featureGroups) 
   featureGroups.bringToBack(); 
-  } 
+  } } 
 });
 
 
