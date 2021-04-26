@@ -89,8 +89,14 @@ p.main {
 
   #clearMap{
     position: absolute;
-    top: 465px;
+    top: 490px;
     left: 10px;
+  }
+
+  #MapOn{
+    position: absolute;
+    top: 490px;
+    left: 170px;
   }
 
   .container { 

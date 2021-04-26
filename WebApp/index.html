@@ -12,35 +12,18 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css"></link> 
   </head>
   <body>
-    <div class="modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- Sidebar -->
     <div class="sidebar">
       <div id="intro">
         <div class = "title"> <h1>Canopy View</h1></div> 
         <div class = "allPoly"> 
-          <div class = "subtitle1"> <h4> View Construction Permits</h4></div>
-          <h5> <form><input id= "ELCheck" type= "checkbox"/>    Electric Permits</h5></form>
-          <h5> <form><input id= "NCCheck" type= "checkbox"/>    New Construction Permit</h5></form>
-          <h5> <form><input id= "DEMCheck" type= "checkbox"/>    Demolition Permits</h5></form> 
-          <h5> <form><input id= "ALTCheck" type= "checkbox"/>   Alteration Permits </h5></form> 
+          <div class = "subtitle1"> <h4> View Completed Construction Permits</h4></div>
           <h5> <form><input id= "ADDCheck" type= "checkbox"/>   Addition Permits </h5></form> 
+          <h5> <form><input id= "ALTCheck" type= "checkbox"/>   Alteration Permits </h5></form> 
+          <h5> <form><input id= "DEMCheck" type= "checkbox"/>    Demolition Permits</h5></form> 
+          <h5> <form><input id= "ELCheck" type= "checkbox"/>    Electric Permits</h5></form>
+          <h5> <form><input id= "NCCheck" type= "checkbox"/>    New Construction Permits</h5></form>
+         
           <div> <button type="button" id = "CON0818" class="btn btn-dark active" Active>2008 - 2018 </button></div>
           <div> <button type="button" id = "CON19" class="btn btn-dark">2019 - Present</button></div>
         </div> 
@@ -87,7 +70,9 @@
                 </ul>
               </div>
             </div>
-              <div> <button type="button" id = "clearMap" class="btn btn-dark">Clear Statistics</button>
+              <div> <button type="button" id = "clearMap" class="btn btn-dark">Toggle Statistics Off</button>
+            </div>
+              <div> <button type="button" id = "MapOn" class="btn btn-dark">Toggle Statistics On</button>
             </div>
             <div class = "link"> <a href="https://phillytrees.azavea.com/" target="_blank" rel="noopener noreferrer">Click to view the Tree Canopy Change in more detail!</a></div>
           </div>
@@ -95,6 +80,7 @@
         <div class = "break1"> ________________________________________
         </div>
         <div class="container1">
+          <div class = "subtitle2"><h4>View Tree Canopy Construction Scenarios</h4> </div>
           <div class="row">
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle pull-left" data-toggle="dropdown">

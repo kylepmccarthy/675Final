@@ -36,10 +36,6 @@ var featureNC;
 var featureADD; 
 var featureDEMO; 
 
-$(window).on('load', function() {
-  $('#modal').modal('show');
-});
-
 
 var ElectricStyle = function(feature) {
   switch (feature.properties.permitdescription) {
@@ -617,8 +613,14 @@ toggle between hiding and showing the dropdown content */
 
 
 $('#clearMap').on('click', function(e) {
-  if (featureGroups != undefined){ 
+  if (map.hasLayer(featureGroups)){ 
   map.removeLayer(featureGroups)
+  } 
+});
+
+$('#MapOn').on('click', function(e) {
+  if (map.hasLayer(featureGroups) == false){ 
+  map.addLayer(featureGroups) 
   } 
 });
 
@@ -657,6 +659,7 @@ ajaxEL = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data
     size : 0.8, 
     style: mystyle,
     filter: variable, 
+    onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
@@ -671,6 +674,7 @@ ajaxALT = function(dataset, mystyle, variable){$.ajax(dataset).done(function(dat
     size : 0.8, 
     style: mystyle,
     filter: variable, 
+    onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
@@ -685,6 +689,7 @@ ajaxADD = function(dataset, mystyle, variable){$.ajax(dataset).done(function(dat
     size : 0.8, 
     style: mystyle,
     filter: variable, 
+    onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
@@ -699,6 +704,7 @@ ajaxDEMO = function(dataset, mystyle, variable){$.ajax(dataset).done(function(da
     size : 0.8, 
     style: mystyle,
     filter: variable, 
+    onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
@@ -713,6 +719,7 @@ ajaxNC = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data
     size : 0.8, 
     style: mystyle,
     filter: variable, 
+    onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
           {radius: 1})
@@ -810,6 +817,15 @@ function onEachFeatureStats1(feature, layer) {
   "Percent Change: "+ feature.properties.pctChange)
 }
 
+
+function onEachFeatureConst(feature, layer) { 
+  layer.bindPopup( 
+    "ADDRESS: " + feature.properties.address + "<br>" + 
+    "YEAR: "   + feature.properties.year + "<br>" + 
+    "PERMIT TYPE: " + feature.properties.permitdescription + "<br>" 
+
+  )
+}
 
 function onEachFeatureStats2(feature, layer) { 
   layer.bindPopup("Probaility of Significant Tree Loss: " + feature.properties.Probs + "<br>" + 
