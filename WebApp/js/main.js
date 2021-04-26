@@ -30,6 +30,7 @@ var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Dat
 var electric1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPOST2.geojson"
 var alteration1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPOST2.geojson"
 var plum2 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/PlumPost2.geojson "
+var Mechanical = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Mechanical.geojson"
 
 var featureGroups; 
 var featureEL;
@@ -37,11 +38,19 @@ var featureALT;
 var featureNC; 
 var featureADD; 
 var featureDEMO; 
+var featureP; 
+var featureM; 
 
 
 var ElectricStyle = function(feature) {
   switch (feature.properties.permitdescription) {
     case 'ELECTRICAL PERMIT' : return {color: '#beaed4'};
+  }
+};
+
+var MechanicalcStyle = function(feature) {
+  switch (feature.properties.permitdescription) {
+    case 'MECHANICAL PERMIT' : return {color: '#f0027f'};
   }
 };
 
@@ -580,11 +589,25 @@ $('input[id ="PCheck"]').click(function () {
     ajaxP(plum, PlumStyle)
     } 
     else { 
-      ajaxP(plum, PlumStyle)
+      ajaxP(plum2, PlumStyle)
     }
   }
   else{ 
     map.removeLayer(featureP) 
+  }
+});
+
+$('input[id ="MCheck"]').click(function () {
+  if ($('input[id ="MCheck"]').prop('checked')) { 
+    if(i == 0) { 
+    ajaxM(Mechanical, MechanicalcStyle, FilterYear)
+    } 
+    else { 
+      ajaxM(Mechanical, MechanicalcStyle, FilterYear2)
+    }
+  }
+  else{ 
+    map.removeLayer(featureM) 
   }
 });
 
@@ -765,6 +788,21 @@ ajaxP = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data)
 });
 } 
 
+ajaxM = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data) {
+  var parsedData = JSON.parse(data);
+  featureM = L.geoJson(parsedData, {
+    size : 0.8, 
+    style: mystyle,
+    filter: variable, 
+    onEachFeature: onEachFeatureConst, 
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, 
+          {radius: 1})
+    }
+}).addTo(map) 
+});
+} 
+
 let i = 0; 
 
 $('#CON0818').click(function(){
@@ -795,6 +833,10 @@ $('#CON0818').click(function(){
     map.removeLayer(featureP); 
     ajaxP(plum, PlumStyle)
   }
+  if(map.hasLayer(featureM)){ 
+    map.removeLayer(featureM); 
+    ajaxM(Mechanical, MechanicalcStyle, FilterYear)
+  }
 });
 
 $('#CON19').click(function(){
@@ -824,6 +866,10 @@ $('#CON19').click(function(){
   if(map.hasLayer(featureP)){ 
     map.removeLayer(featureP); 
     ajaxP(plum2, PlumStyle)
+  }
+  if(map.hasLayer(featureM)){ 
+    map.removeLayer(featureM); 
+    ajaxM(Mechanical, MechanicalcStyle, FilterYear2)
   }
 });
 

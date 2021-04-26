@@ -87,15 +87,26 @@ p.main {
     left: 9px;
   }
 
+  #checkM { 
+    position: absolute; 
+    top: 300px; 
+    left: 200px; 
+  }
+
   #clearMap{
     position: absolute;
-    top: 490px;
+    top: 470px;
     left: 10px;
+  }
+
+  .filtbut{ 
+    position: absolute; 
+    top: 300px; 
   }
 
   #MapOn{
     position: absolute;
-    top: 490px;
+    top: 470px;
     left: 170px;
   }
 
@@ -107,11 +118,18 @@ p.main {
 
   .allPoly { 
     position : absolute; 
-    top: 240px
+    top: 270px
+  }
+  .allPoly2 { 
+    position : absolute; 
+    top: 270px; 
+    left: 200px;
   }
 
   .subtitle1 { 
     font-weight: bold; 
+    position: absolute; 
+    top: 230px; 
   }
 
   .break { 
@@ -127,8 +145,14 @@ p.main {
 
   #CON19 { 
     position: absolute; 
-    top: 186px ; 
+    top: 100px ; 
     left : 130px; 
+  }
+
+  #CON0818 { 
+    position: absolute; 
+    top: 100px ; 
+    left : 1px; 
   }
 
   .active {
@@ -137,13 +161,13 @@ p.main {
 
   .break1 { 
     position: absolute; 
-    top: 475px; 
+    top: 445px; 
     font-weight: bold; 
   }
 
   .container1 { 
     position: absolute; 
-    top: 505px; 
+    top: 480px; 
   }
 
 
