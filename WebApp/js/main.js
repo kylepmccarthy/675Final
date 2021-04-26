@@ -25,7 +25,7 @@ var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/
 var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NewConstR3.geojson"
 var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR3.geojson"
 var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR3.geojson"
-var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/construction-scenarios.geojson"
+var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/scenarios.geojson"
 
 var featureGroups; 
 var featureEL;
@@ -66,6 +66,23 @@ var newStyle = function(feature) {
   }
 };
 
+var ResultStyle = function(feature) {
+  if(feature.properties.Risk_Cat == "Very Low"){
+    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.Risk_Cat == "Low"){ 
+    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.Risk_Cat == "Moderate"){ 
+    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.Risk_Cat == "High"){ 
+    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+  }
+  if(feature.properties.Risk_Cat == "Severe"){
+    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    }
+};
 
 var CoverageStyle = function(feature) {
   if(feature.properties.AreaCoverage08 < 2080000){
@@ -445,8 +462,7 @@ let FilterResults5 = function(feature) {
 
 
 
-
-let FilterYear1 = function(feature) {
+let FilterYear = function(feature) {
   if (feature.properties.year <= 2018 ) {
     return true;
   } else {
@@ -455,7 +471,7 @@ let FilterYear1 = function(feature) {
 };
 
 let FilterYear2 = function(feature) {
-  if (feature.properties.year <= 2019 ) {
+  if (feature.properties.year >= 2019 ) {
     return true;
   } else {
     return false
@@ -489,7 +505,12 @@ $('input[id ="ELCheck"]').click(function () {
 
 $('input[id ="NCCheck"]').click(function () {
   if ($('input[id ="NCCheck"]').prop('checked')) { 
-    ajaxNC(newconst, newStyle)
+    if (i == 0 ) { 
+      ajaxNC(newconst, newStyle, FilterYear)
+    } 
+    else { 
+      ajaxNC(newconst, newStyle, FilterYear2)
+    }
   }
   else{ 
     map.removeLayer(featureNC)
@@ -498,7 +519,12 @@ $('input[id ="NCCheck"]').click(function () {
 
 $('input[id ="DEMCheck"]').click(function () {
   if ($('input[id ="DEMCheck"]').prop('checked')) { 
-    ajaxDEMO(demolition, DeomoStyle)
+    if (i == 0){ 
+      ajaxDEMO(demolition, DeomoStyle, FilterYear)
+    } 
+    else { 
+      ajaxDEMO(demolition, DeomoStyle, FilterYear2)
+    }
   }
   else{ 
     map.removeLayer(featureDEMO)
@@ -516,7 +542,12 @@ $('input[id ="ALTCheck"]').click(function () {
 
 $('input[id ="ADDCheck"]').click(function () {
   if ($('input[id ="ADDCheck"]').prop('checked')) { 
-    ajaxADD(addition, AddStyle)
+    if(i == 0) { 
+    ajaxADD(addition, AddStyle, FilterYear)
+    } 
+    else { 
+      ajaxADD(addition, AddStyle, FilterYear2)
+    }
   }
   else{ 
     map.removeLayer(featureADD) 
@@ -524,42 +555,42 @@ $('input[id ="ADDCheck"]').click(function () {
 });
 
 
-var NDropDown1 = function(string, style, dataset, layer){ $( string ).click(function() {
+var NDropDown1 = function(string, style, dataset, Filter){ $( string ).click(function() {
   if(featureGroups != undefined){
     map.removeLayer(featureGroups) }  
-  ajaxfunc(dataset, style, FilterMain)
+  ajaxfunc(dataset, style, Filter)
 });
 } 
 
-NDropDown1("#cov08", CoverageStyle, Neighborhood)
-NDropDown1("#cov18", CoverageStyle18,  Neighborhood)
-NDropDown1("#pctCov08", pctCoverageStyle, Neighborhood)
-NDropDown1("#pctCove18", pctCoverageStyle18, Neighborhood)
-NDropDown1("#lostTrees", AreaLossN, Neighborhood)
-NDropDown1("#gainedTrees", AreaGainN, Neighborhood)
-NDropDown1("#NetChange", NetChangeN, Neighborhood)
-NDropDown1("#pctLoss", pctLossN, Neighborhood)
-NDropDown1("#pctGain", pctLossN, Neighborhood)
-NDropDown1("#pctChange", pctLossN, Neighborhood)
+NDropDown1("#cov08", CoverageStyle, Neighborhood, FilterMain)
+NDropDown1("#cov18", CoverageStyle18,  Neighborhood, FilterMain)
+NDropDown1("#pctCov08", pctCoverageStyle, Neighborhood, FilterMain)
+NDropDown1("#pctCove18", pctCoverageStyle18, Neighborhood, FilterMain)
+NDropDown1("#lostTrees", AreaLossN, Neighborhood, FilterMain)
+NDropDown1("#gainedTrees", AreaGainN, Neighborhood, FilterMain)
+NDropDown1("#NetChange", NetChangeN, Neighborhood, FilterMain)
+NDropDown1("#pctLoss", pctLossN, Neighborhood, FilterMain)
+NDropDown1("#pctGain", pctLossN, Neighborhood, FilterMain)
+NDropDown1("#pctChange", pctLossN, Neighborhood, FilterMain)
 
 
 
-NDropDown1("#cov08F", CoverageStyle08F, Grid)
-NDropDown1("#cov18F", CoverageStyle18F,  Grid)
-NDropDown1("#pctCov08F", pctCoverageStyle, Grid)
-NDropDown1("#pctCove18F", pctCoverageStyle18, Grid)
-NDropDown1("#lostTreesF", AreaLossF, Grid)
-NDropDown1("#gainedTreesF", AreaGainF, Grid)
-NDropDown1("#NetChangeF", NetChangeF, Grid)
-NDropDown1("#pctLossF", pctLossF, Grid)
-NDropDown1("#pctGainF", pctLossF, Grid)
-NDropDown1("#pctChangeF", pctLossF, Grid)
+NDropDown1("#cov08F", CoverageStyle08F, Grid, FilterMain)
+NDropDown1("#cov18F", CoverageStyle18F,  Grid, FilterMain)
+NDropDown1("#pctCov08F", pctCoverageStyle, Grid, FilterMain)
+NDropDown1("#pctCove18F", pctCoverageStyle18, Grid, FilterMain)
+NDropDown1("#lostTreesF", AreaLossF, Grid, FilterMain)
+NDropDown1("#gainedTreesF", AreaGainF, Grid, FilterMain)
+NDropDown1("#NetChangeF", NetChangeF, Grid, FilterMain)
+NDropDown1("#pctLossF", pctLossF, Grid, FilterMain)
+NDropDown1("#pctGainF", pctLossF, Grid, FilterMain)
+NDropDown1("#pctChangeF", pctLossF, Grid, FilterMain)
 
-NDropDown1("#S1", pctLossF, results)
-NDropDown1("#S2", pctLossF, results)
-NDropDown1("#S3", pctLossF, results)
-NDropDown1("#S4", pctLossF, results)
-NDropDown1("#S5", pctLossF, results)
+NDropDown1("#S1", ResultStyle, results, FilterResults1)
+NDropDown1("#S2", ResultStyle, results, FilterResults2)
+NDropDown1("#S3", ResultStyle, results, FilterResults3)
+NDropDown1("#S4", ResultStyle, results, FilterResults4)
+NDropDown1("#S5", ResultStyle, results, FilterResults5)
 
 
 
@@ -598,7 +629,7 @@ ajaxfunc = function(dataset, myStyle, myFilter){$.ajax(dataset).done(function(da
     fillOpacity: 1,
     weight: 3,
     filter: myFilter, 
-    onEachFeature: onEachFeatureStats
+    onEachFeature: onEachFeatureStats2
     }).addTo(map);
     featureGroups.bringToBack(); 
 });
@@ -674,28 +705,42 @@ ajaxNC = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data
 });
 } 
 
-
-
-$('#Filter').on('click', function(e) {
-  var x = document.getElementById("year").value;
-  let FilterYear= function(feature) {
-    if (feature.properties.Year == x) {
-      return true;
-    } else {
-      return false; 
-    }
-  };
-
-});
+let i = 0; 
 
 $('#CON0818').click(function(){
   $("button").removeClass("active");
   $(this).addClass("active");
+  i = 0; 
+  if(map.hasLayer(featureNC)){ 
+    map.removeLayer(featureNC); 
+    ajaxNC(newconst, newStyle, FilterYear)
+  }
+  if(map.hasLayer(featureDEMO)){ 
+    map.removeLayer(featureDEMO); 
+    ajaxDEMO(demolition, DeomoStyle, FilterYear)
+  }
+  if(map.hasLayer(featureADD)){ 
+    map.removeLayer(featureADD); 
+    ajaxADD(addition, AddStyle, FilterYear)
+  }
 });
 
 $('#CON19').click(function(){
   $("button").removeClass("active");
   $(this).addClass("active");
+  i = 1; 
+  if(map.hasLayer(featureNC)){ 
+    map.removeLayer(featureNC); 
+    ajaxNC(newconst, newStyle, FilterYear2)
+  }
+  if(map.hasLayer(featureDEMO)){ 
+    map.removeLayer(featureDEMO); 
+    ajaxDEMO(demolition, DeomoStyle, FilterYear2)
+  }
+  if(map.hasLayer(featureADD)){ 
+    map.removeLayer(featureADD); 
+    ajaxADD(addition, AddStyle, FilterYear2)
+  }
 });
 
 
@@ -716,4 +761,8 @@ function onEachFeatureStats(feature, layer) {
   "Percent Loss:  " + feature.properties.pctLoss + "<br>" + 
   "Precent Gain:  " + feature.properties.pctGain + "<br>" + 
   "Percent Change: "+ feature.properties.pctChange)
+}
+
+function onEachFeatureStats2(feature, layer) { 
+  layer.bindPopup("Probaility: " + feature.properties.Probs + "<br>") 
 }
