@@ -68,19 +68,19 @@ var newStyle = function(feature) {
 
 var ResultStyle = function(feature) {
   if(feature.properties.Risk_Cat == "Very Low"){
-    return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
+    return { fillColor: '#f7f7f7', weight: .3, opacity: 1, color: 'red'};
   }
   if(feature.properties.Risk_Cat == "Low"){ 
-    return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
+    return { fillColor: '#cccccc', weight: .3, opacity: 1, color: 'red'};
   }
   if(feature.properties.Risk_Cat == "Moderate"){ 
-    return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
+    return { fillColor: '#969696', weight: .3, opacity: 1, color: 'red'};
   }
   if(feature.properties.Risk_Cat == "High"){ 
-    return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
+    return { fillColor: '#636363', weight: .3, opacity: 1, color: 'red'};
   }
   if(feature.properties.Risk_Cat == "Severe"){
-    return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
+    return { fillColor: '#252525', weight: .3, opacity: 1, color: 'red'};
     }
 };
 
@@ -421,41 +421,41 @@ let FilterMain = function(feature) {
 
 let FilterResults2 = function(feature) {
   if (feature.properties.Scenario == 'const_25less') {
-    return false;
+    return true;
   } else {
-    return true; 
+    return false; 
   }
 };
 
 let FilterResults1 = function(feature) {
   if (feature.properties.Scenario == 'const_50less') {
-    return false;
+    return true;
   } else {
-    return true; 
+    return false; 
   }
 };
 
 let FilterResults3 = function(feature) {
   if (feature.properties.Scenario == 'const_original') {
-    return false;
+    return true;
   } else {
-    return true; 
+    return false; 
   }
 };
 
 let FilterResults4 = function(feature) {
   if (feature.properties.Scenario == 'const_25more') {
-    return false;
+    return true;
   } else {
-    return true; 
+    return false; 
   }
 };
 
 let FilterResults5 = function(feature) {
   if (feature.properties.Scenario == 'const_50more') {
-    return false;
+    return true;
   } else {
-    return true; 
+    return false; 
   }
 };
 
@@ -621,7 +621,7 @@ var showResults = function() {
 };
 
 
-ajaxfunc = function(dataset, myStyle, myFilter){$.ajax(dataset).done(function(data) {
+ajaxfunc = function(dataset, myStyle, myFilter, oneach){$.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureGroups = L.geoJson(parsedData, {
     style: myStyle,
@@ -629,7 +629,7 @@ ajaxfunc = function(dataset, myStyle, myFilter){$.ajax(dataset).done(function(da
     fillOpacity: 1,
     weight: 3,
     filter: myFilter, 
-    onEachFeature: onEachFeatureStats2
+    onEachFeature: onEachFeatureStats2,
     }).addTo(map);
     featureGroups.bringToBack(); 
 });
