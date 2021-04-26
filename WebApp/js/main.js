@@ -22,7 +22,7 @@ var Grid = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/g
 
 var electric = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPRE.geojson"
 var alteration = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPRE.geojson"
-var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NewConstR3.geojson"
+var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NC2.geojson"
 var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR3.geojson"
 var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR4.geojson"
 var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/scenarios.geojson"
