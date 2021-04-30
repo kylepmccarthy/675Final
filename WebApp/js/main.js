@@ -688,19 +688,6 @@ $('#MapOn').on('click', function(e) {
 });
 
 
-var showResults = function() {
-  /* =====================
-  This function uses some jQuery methods that may be new. $(element).hide()
-  will add the CSS "display: none" to the element, effectively removing it
-  from the page. $(element).show() removes "display: none" from an element,
-  returning it to the page. You don't need to change this part.
-  ===================== */
-  // => <div id="intro" css="display: none">
-  $('#intro').hide();
-  // => <div id="results">
-  $('#results').show();
-};
-
 
 ajaxfunc = function(dataset, myStyle, myFilter, oneach){ 
   return $.ajax(dataset).done(function(data) {
@@ -969,7 +956,7 @@ histogramChart = new Chart(ctx, {
     data: {
         labels: ['Very Low', 'Low', 'Moderate', 'High', 'Very High'],
         datasets: [{
-            label: '# of Votes',
+            label: '# of Grid Cells',
             data: histogramBins, 
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

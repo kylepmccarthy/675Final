@@ -68,21 +68,39 @@ p.main {
   height:15px;
   }
 
+.btn-toolbar { 
+  padding-top: 13px; 
+}
+
 .custom-popup, .leaflet-popup-tip {
   background: transparent;
   border: none;
   box-shadow: none;
   }
 
+
   .subtitle1 { 
-    position: relative; 
-    padding: 20px; 
-    font-weight: bold; 
-    font-size: 14px;
+    font-size: 16px; 
+    font-weight: bold;
+    padding: 5px; 
   }
 
+  .subtitle2 { 
+    font-size: 16px; 
+    font-weight: bold;
+    padding: 5px; 
+  }
 
+  .subtitle3 { 
+    font-size: 16x; 
+    font-weight: bold;
+    padding: 5px; 
+  }
 
+  .link { 
+    font-size: 12px; 
+    padding: 20px
+  }
 
 
   .active {
@@ -92,8 +110,10 @@ p.main {
 
 
   .chart-container { 
-    width: 300px; 
-    height: 300px; 
+    width: 350px; 
+    height: 500px; 
+    position: relative; 
+    padding: 9px; 
   }
 
 

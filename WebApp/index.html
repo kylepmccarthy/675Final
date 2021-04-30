@@ -19,10 +19,10 @@
       <div id="intro">
         <div class = "title"> <h1>Canopy View</h1></div> 
         <div class="container">
-          <div class = "subtitle2"><h4>View Canopy Statistics</h4> </div>
+          <div class = "subtitle1" id = "first">View Canopy Statistics</div>
           <div class="row">
               <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-default dropdown-toggle first" data-toggle="dropdown" id = "firstDrop">
                   View Tree Canopy Statistics by Neighborhood <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu scrollable-menu" role="menu">
@@ -60,11 +60,7 @@
                 </ul>
               </div>
             </div>
-            <div> </div>
-            <div class="btn-toolbar"> 
-               <button type="button" id = "clearMap" class="btn btn-dark">Toggle Statistics Off</button>
-               <button type="button" id = "MapOn" class="btn btn-dark">Toggle Statistics On</button>
-            </div>
+            <div> </div> 
             <div class = "break"> ________________________________________</div>
             <div> 
               </div>
@@ -74,22 +70,20 @@
               <h5> <form><input id= "ALTCheck" type= "checkbox"/>   Alteration Permits </h5></form> 
               <h5> <form><input id= "DEMCheck" type= "checkbox"/>    Demolition Permits</h5></form> 
               <h5> <form><input id= "ELCheck" type= "checkbox"/>    Electric Permits</h5></form>
-              </div>
-            <div class = "allPoly2"> 
               <h5> <form><input id= "NCCheck" type= "checkbox"/>    New Construction Permits</h5></form>
               <h5> <form><input id= "MCheck" type= "checkbox"/>    Mechanical Permits</h5></form>
               <h5> <form><input id= "PCheck" type= "checkbox"/>    Plumbing Permits</h5></form>
               </div>
-              <div class="btn-toolbar"> 
-               <button type="button" id = "CON0818" class="btn btn-dark active" Active>2008 - 2018 </button>
-              <button type="button" id = "CON19" class="btn btn-dark">2019 - Present</button>
-            </div> 
           </div>
+          <div class="btn-toolbar"> 
+            <button type="button" id = "CON0818" class="btn btn-dark active" Active>2008 - 2018 </button>
+           <button type="button" id = "CON19" class="btn btn-dark">2019 - Present</button>
+         </div> 
         </div>
         <div class = "break1"> ________________________________________
         </div>
         <div class="container1">
-          <div class = "subtitle2"><h4>View Tree Canopy Construction Scenarios</h4> </div>
+          <div class = "subtitle3">View Tree Canopy Construction Scenarios </div>
           <div class="row">
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle pull-left" data-toggle="dropdown">
@@ -104,11 +98,15 @@
                 </ul>
               </div>
             </div>
+           <div class="btn-toolbar"> 
+            <button type="button" id = "clearMap" class="btn btn-dark">Toggle Statistics Off</button>
+            <button type="button" id = "MapOn" class="btn btn-dark">Toggle Statistics On</button>
+         </div>
             <div class="chart-container">
               <canvas id="myChart"></canvas>
+              <div class = "link"> <a href="https://phillytrees.azavea.com/" target="_blank" rel="noopener noreferrer">Click to view the Tree Canopy Change in more detail!</a></div>
           </div>
           </div>
-          <div class = "link"> <a href="https://phillytrees.azavea.com/" target="_blank" rel="noopener noreferrer">Click to view the Tree Canopy Change in more detail!</a></div>
       </div>
     </div>
     <!-- Map -->
