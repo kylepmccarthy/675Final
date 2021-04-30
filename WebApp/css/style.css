@@ -21,8 +21,7 @@ p.main {
     left: 0px;
     width: 400px;
     top: 0;
-    bottom: 0;
-    overflow-y: auto;
+    bottom: 0; 
     padding: 20px;
     font-size: 16px;
 }
@@ -45,17 +44,11 @@ p.main {
   top: 10px
 }
 
-.link { 
-  font-size: small; 
-  color:  black;
-  position: absolute; 
-  top: 700px
-}
+
 
 .title { 
   color : rgb(56, 90, 5); 
   font-weight: bold;
-  position: absolute; 
 }
 
 .custom-popup, .leaflet-popup-content-wrapper {
@@ -81,93 +74,26 @@ p.main {
   box-shadow: none;
   }
 
-  #left-panel-link {
-    position: absolute;
-    top: 4px;
-    left: 9px;
-  }
-
-  #checkM { 
-    position: absolute; 
-    top: 300px; 
-    left: 200px; 
-  }
-
-  #clearMap{
-    position: absolute;
-    top: 470px;
-    left: 10px;
-  }
-
-  .filtbut{ 
-    position: absolute; 
-    top: 300px; 
-  }
-
-  #MapOn{
-    position: absolute;
-    top: 470px;
-    left: 170px;
-  }
-
-  .container { 
-    position: absolute; 
-    top:100px; 
-    left:0px; 
-  }
-
-  .allPoly { 
-    position : absolute; 
-    top: 270px
-  }
-  .allPoly2 { 
-    position : absolute; 
-    top: 270px; 
-    left: 200px;
-  }
-
   .subtitle1 { 
+    position: relative; 
+    padding: 20px; 
     font-weight: bold; 
-    position: absolute; 
-    top: 230px; 
+    font-size: 14px;
   }
 
-  .break { 
-    position: absolute; 
-    top: 210px
-  }
 
-  #Filter { 
-    position: absolute; 
-    top: 156px; 
-    left: 230px;
-  }
 
-  #CON19 { 
-    position: absolute; 
-    top: 100px ; 
-    left : 130px; 
-  }
 
-  #CON0818 { 
-    position: absolute; 
-    top: 100px ; 
-    left : 1px; 
-  }
 
   .active {
     background-color: green !important;
   }
 
-  .break1 { 
-    position: absolute; 
-    top: 445px; 
-    font-weight: bold; 
-  }
 
-  .container1 { 
-    position: absolute; 
-    top: 480px; 
+
+  .chart-container { 
+    width: 300px; 
+    height: 300px; 
   }
 
 

@@ -40,6 +40,9 @@ var featureADD;
 var featureDEMO; 
 var featureP; 
 var featureM; 
+var histogramChart; 
+
+var histogramBins = [0, 0, 0, 0, 0] 
 
 
 var ElectricStyle = function(feature) {
@@ -619,6 +622,19 @@ var NDropDown1 = function(string, style, dataset, Filter, pop){ $( string ).clic
 });
 } 
 
+var NDropDown2Bar = function(string, style, dataset, Filter, pop){ $( string ).click(function() {
+  if(featureGroups != undefined){
+    map.removeLayer(featureGroups) }  
+    histogramBins = [0, 0, 0, 0, 0]; 
+  ajaxfunc(dataset, style, Filter, pop).done(function (){ 
+    if(histogramChart === undefined) { 
+      BuildChart() 
+    }
+    else{ updateChart()} 
+  }) 
+});
+} 
+
 NDropDown1("#cov08", CoverageStyle, Neighborhood, FilterMain, onEachFeatureStats)
 NDropDown1("#cov18", CoverageStyle18,  Neighborhood, FilterMain, onEachFeatureStats)
 NDropDown1("#pctCov08", pctCoverageStyle, Neighborhood, FilterMain, onEachFeatureStats)
@@ -643,11 +659,11 @@ NDropDown1("#pctLossF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
 NDropDown1("#pctGainF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
 NDropDown1("#pctChangeF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
 
-NDropDown1("#S1", ResultStyle, results, FilterResults1, onEachFeatureStats2)
-NDropDown1("#S2", ResultStyle, results, FilterResults2, onEachFeatureStats2)
-NDropDown1("#S3", ResultStyle, results, FilterResults3, onEachFeatureStats2)
-NDropDown1("#S4", ResultStyle, results, FilterResults4, onEachFeatureStats2)
-NDropDown1("#S5", ResultStyle, results, FilterResults5, onEachFeatureStats2)
+NDropDown2Bar("#S1", ResultStyle, results, FilterResults1, onEachFeatureStats2)
+NDropDown2Bar("#S2", ResultStyle, results, FilterResults2, onEachFeatureStats2)
+NDropDown2Bar("#S3", ResultStyle, results, FilterResults3, onEachFeatureStats2)
+NDropDown2Bar("#S4", ResultStyle, results, FilterResults4, onEachFeatureStats2)
+NDropDown2Bar("#S5", ResultStyle, results, FilterResults5, onEachFeatureStats2)
 
 
 
@@ -686,7 +702,8 @@ var showResults = function() {
 };
 
 
-ajaxfunc = function(dataset, myStyle, myFilter, oneach){$.ajax(dataset).done(function(data) {
+ajaxfunc = function(dataset, myStyle, myFilter, oneach){ 
+  return $.ajax(dataset).done(function(data) {
   var parsedData = JSON.parse(data);
   featureGroups = L.geoJson(parsedData, {
     style: myStyle,
@@ -883,31 +900,30 @@ function yourOnEachFeatureFunction(feature, layer){
 } 
 
 function onEachFeatureStats(feature, layer) { 
-  layer.bindPopup("Neighborhood: " + feature.properties.LISTNAME + "<br>" + 
-    "2008 Tree Canopy Coverage:  " + feature.properties.AreaCoverage08 + "<br>" + 
-  "2018 Tree Canopy Coverage:  " + feature.properties.AreaCoverage18 + "<br>" + 
-  "2008 Percent Tree Coverage:  " + feature.properties.pctCoverage08 + "<br>" + 
-  "2018 Percent Tree Coverage:  " + feature.properties.pctCoverage18 + "<br>" + 
-  "Area Lost:  " + feature.properties.AreaLoss + "<br>" + 
-  "Area Gained:  "+ feature.properties.AreaGain + "<br>" + 
-  "Net Change:  " + feature.properties.GainMinusLoss + "<br>" + 
-  "Percent Loss:  " + feature.properties.pctLoss + "<br>" + 
-  "Precent Gain:  " + feature.properties.pctGain + "<br>" + 
-  "Percent Change: "+ feature.properties.pctChange)
+  layer.bindPopup("Neighborhood: " + feature.properties.LISTNAME +  "<br>" + 
+    "2008 Tree Canopy Coverage:  " + feature.properties.AreaCoverage08.toFixed(2) + " Square Feet" +  "<br>" + 
+  "2018 Tree Canopy Coverage:  " + feature.properties.AreaCoverage18.toFixed(2) +  " Square Feet" + "<br>" + 
+  "2008 Percent Tree Coverage:  " + feature.properties.pctCoverage08.toFixed(2) + "%" + "<br>" + 
+  "2018 Percent Tree Coverage:  " + feature.properties.pctCoverage18.toFixed(2) + "%" + "<br>" + 
+  "Area Lost:  " + feature.properties.AreaLoss.toFixed(2) + " Square Feet" + "<br>" + 
+  "Area Gained:  "+ feature.properties.AreaGain.toFixed(2) + " Square Feet" + "<br>" + 
+  "Net Change:  " + feature.properties.GainMinusLoss.toFixed(2) + "%" + " Square Feet" + "<br>" + 
+  "Percent Loss:  " + feature.properties.pctLoss.toFixed(2)+ "%"  + "<br>" + 
+  "Precent Gain:  " + feature.properties.pctGain.toFixed(2)+ "%"  + "<br>" + 
+  "Percent Change: "+ feature.properties.pctChange.toFixed(2)+ "%" )
 }
 
 function onEachFeatureStats1(feature, layer) { 
   layer.bindPopup(
-    "2008 Tree Canopy Coverage:  " + feature.properties.AreaCoverage08 + "<br>" + 
-  "2018 Tree Canopy Coverage:  " + feature.properties.AreaCoverage18 + "<br>" + 
-  "2008 Percent Tree Coverage:  " + feature.properties.pctCoverage08 + "<br>" + 
-  "2018 Percent Tree Coverage:  " + feature.properties.pctCoverage18 + "<br>" + 
-  "Area Lost:  " + feature.properties.AreaLoss + "<br>" + 
-  "Area Gained:  "+ feature.properties.AreaGain + "<br>" + 
-  "Net Change:  " + feature.properties.GainMinusLoss + "<br>" + 
-  "Percent Loss:  " + feature.properties.pctLoss + "<br>" + 
-  "Precent Gain:  " + feature.properties.pctGain + "<br>" + 
-  "Percent Change: "+ feature.properties.pctChange)
+    "2008 Tree Canopy Coverage:  " + feature.properties.AreaCoverage08.toFixed(2)+ " Square Feet" + "<br>" + 
+  "2018 Tree Canopy Coverage:  " + feature.properties.AreaCoverage18.toFixed(2) + " Square Feet" + "<br>" + 
+  "2008 Percent Tree Coverage:  " + feature.properties.pctCoverage08.toFixed(2) + "%" + "<br>" + 
+  "2018 Percent Tree Coverage:  " + feature.properties.pctCoverage18.toFixed(2)+ "%"  + "<br>" + 
+  "Area Lost:  " + feature.properties.AreaLoss.toFixed(2) + " Square Feet"+ "<br>" + 
+  "Area Gained:  "+ feature.properties.AreaGain.toFixed(2)+ " Square Feet" + "<br>" + 
+  "Percent Loss:  " + feature.properties.pctLoss.toFixed(2)+ "%"  + "<br>" + 
+  "Precent Gain:  " + feature.properties.pctGain.toFixed(2) + "%"  + "<br>" + 
+  "Percent Change: "+ feature.properties.pctChange.toFixed(2) + "%" )
 }
 
 
@@ -920,7 +936,76 @@ function onEachFeatureConst(feature, layer) {
   )
 }
 
+var countCat = function (feature) { 
+  if(feature.properties.Risk_Cat === "Very Low"){ 
+    histogramBins[0] = histogramBins[0] + 1
+  }
+  if(feature.properties.Risk_Cat === "Low"){ 
+    histogramBins[1] = histogramBins[1] + 1
+  }
+  if(feature.properties.Risk_Cat === "Moderate"){ 
+    histogramBins[2] = histogramBins[2] + 1
+  }
+  if(feature.properties.Risk_Cat === "High"){ 
+    histogramBins[3] = histogramBins[3] + 1
+  }
+  if(feature.properties.Risk_Cat === "Severe"){ 
+    histogramBins[4] = histogramBins[4] + 1
+  }
+}
+
+
 function onEachFeatureStats2(feature, layer) { 
-  layer.bindPopup("Probaility of Significant Tree Loss: " + feature.properties.Probs + "<br>" + 
-  "Tree Loss Severity: " + feature.properties.Risk_Cat + "<br>") 
+  layer.bindPopup("Probaility of Significant Tree Loss: " + feature.properties.Probs.toFixed(2) + "%" + "<br>" + 
+  "Tree Loss Severity: " + feature.properties.Risk_Cat + "<br>") ; 
+  countCat(feature)
+}
+
+function BuildChart( ){ 
+  var ctx = document.getElementById('myChart').getContext('2d');
+
+histogramChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Very Low', 'Low', 'Moderate', 'High', 'Very High'],
+        datasets: [{
+            label: '# of Votes',
+            data: histogramBins, 
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+}
+
+
+var histogramBins1 = [0, 0, 0, 0, 0] 
+
+var updateChart= function(){ 
+  histogramChart.data.datasets[0].data = histogramBins 
+  histogramChart.update()
 }
