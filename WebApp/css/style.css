@@ -26,17 +26,18 @@ p.main {
     font-size: 16px;
 }
 
-.legend {
-  position: absolute;
-  background-color: #fff;
-  bottom: 250px; 
-  left: 20px; 
-  z-index: 2000;
-}
+
 
 .legendTitle { 
-  font-size: medium; 
+  font-size: large; 
   font-weight: bold; 
+  position: absolute; 
+  bottom: 200px; 
+  right: 239px; 
+  width: 85px; 
+  height: 30px;
+  background-color: white; 
+  padding: 5px; 
 }
 
 .break { 
@@ -49,6 +50,7 @@ p.main {
 .title { 
   color : rgb(56, 90, 5); 
   font-weight: bold;
+  font-size: 16px; 
 }
 
 .custom-popup, .leaflet-popup-content-wrapper {
@@ -115,6 +117,35 @@ p.main {
     position: relative; 
     padding: 9px; 
   }
+
+
+  .legend {
+     list-style: none; 
+  position: absolute; 
+  bottom: 30px; 
+  right: 60px; 
+  background-color: white;
+  border-color: black;
+  background-size: 300px 100px;
+  height: 140px; 
+  width: 50px; 
+  padding-left: 10px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  padding-right: 0px; 
+  width: 260px; }
+  
+
+  
+  .legend li { float: left; margin-right: 10px; }
+  .legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 5px; }
+  /* your colors */
+  .legend .Top { background-color: #252525; border-color: black; }
+  .legend .Two{ background-color: #636363; border-color: black;}
+  .legend .Three { background-color: #969696; border-color: black;}
+  .legend .Four { background-color: #cccccc; border-color: black;}
+  .legend .Bottom { background-color: #f7f7f7; border-color: black; }
+
 
 
 
