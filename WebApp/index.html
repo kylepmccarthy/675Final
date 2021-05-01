@@ -36,7 +36,6 @@
                   <li id = "pctLoss"><a href="#">Percent Tree Canopy Loss</a></li>
                   <li id = "pctGain"><a href="#">Percent Tree Canopy Gain</a></li>
                   <li id = "pctChange"><a href="#">Percent Change</a></li>
-                  <li id = "ConstructionCount"><a href="#">Count of Construction</a></li>
                 </ul>
               </div>
             </div>
@@ -56,7 +55,6 @@
                   <li id = "pctLossF"><a href="#">Percent Tree Canopy Loss</a></li>
                   <li id = "pctGainF"><a href="#">Percent Tree Canopy Gain</a></li>
                   <li id = "pctChangeF"><a href="#">Percent Change</a></li>
-                  <li id = "ConstructionCountF"><a href="#">Count of Construction</a></li>
                 </ul>
               </div>
             </div>
@@ -68,7 +66,7 @@
             <div class = "allPoly"> 
               <div class="container" id= "checkCont">
                 <div class="row">
-                  <div class="col-sm">
+                  <div class="col-sm" id = "positionCheck1">
                     <h5> <input id= "ADDCheck" type= "checkbox"/>   Addition Permits </h5>
                     <h5> <input id= "ALTCheck" type= "checkbox"/>   Alteration Permits </h5>
                     <h5> <input id= "DEMCheck" type= "checkbox"/>    Demolition Permits</h5>
@@ -82,7 +80,7 @@
                 </div>
             </div>
           </div>
-          <div class="btn-toolbar"> 
+          <div class="btn-toolbar" id = "years"> 
             <button type="button" id = "CON0818" class="btn btn-dark active" Active>2008 - 2018 </button>
            <button type="button" id = "CON19" class="btn btn-dark">2019 - Present</button>
          </div> 
@@ -93,7 +91,7 @@
           <div class = "subtitle3">View Tree Canopy Construction Scenarios </div>
           <div class="row">
               <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle pull-left" data-toggle="dropdown">
+                <button type="button" class="btn btn-default dropdown-toggle pull-left" data-toggle="dropdown" id = "scenarioD">
                   View Tree Canopy Scenarios <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu scrollable-menu" role="menu">
@@ -105,16 +103,18 @@
                 </ul>
               </div>
             </div>
-           <div class="btn-toolbar"> 
+           <div class="btn-toolbar" id = "clear"> 
             <button type="button" id = "clearMap" class="btn btn-dark">Toggle Statistics Off</button>
             <button type="button" id = "MapOn" class="btn btn-dark">Toggle Statistics On</button>
          </div>
             <div class="chart-container">
-              <canvas id="myChart"></canvas>
+              <canvas id="myChart" height="70" width="100"></canvas>
+              <p id = "private"> <img src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.visitphilly.com%2Fthings-to-do%2Fattractions%2Fbenjamin-franklin-parkway%2F&psig=AOvVaw1mjYjkBw8W7sQ6ODEp79gB&ust=1619982158192000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKiRg_uVqfACFQAAAAAdAAAAABAO" style="width:75%;height:75%x;"> </p>
               
-              <div class = "link"> <a href="https://phillytrees.azavea.com/" target="_blank" rel="noopener noreferrer">Click to view the Tree Canopy Change in more detail!</a></div>
+              
           </div>
-          </div>
+          
+        </div>
       </div>
     </div>
     <!-- Map -->
@@ -122,7 +122,7 @@
     <!-- Legend -->
     
 </div>
-<div class = "legendTitle" id = "legends" style="display: none;" > Legend </div>
+<div class = "legendTitle" id = "legends" style="display: none;" > Neighborhood/Grid Statistics </div>
 <ul class="legend" style="display: none;" id = "AreaCov">
   <li><span class="Top"></span> Very High Tree Canopy Area</li>
   <li><span class="Two"></span> High Tree Canopy Area</li>
@@ -156,7 +156,7 @@
 </ul>
 
 <ul class="legend" style="display: none;" id = "NetChangeL">
-  <li><span class="Top"></span> Area Gain!</li>
+  <li><span class="Top"></span> Tree Area Gain!</li>
   <li><span class="Two"></span> Low Area Loss</li>
   <li><span class="Three"></span> Moderate Area Loss</li>
   <li><span class="Four" ></span> High Area Loss</li>
@@ -205,9 +205,22 @@
 </ul>
 
 
+<ul class="legendC" style="display: none;" id = "ConL">
+  <li><span class="Top"></span> Addition Permits </li>
+  <li><span class="Two"></span> Alteration Permits</li>
+  <li><span class="Three"></span> Demolition Permits</li>
+  <li><span class="Four" ></span> Electric Permits</li>
+  <li><span class="Five" ></span> New Construction Permits</li>
+  <li><span class="Six" ></span> Mechanical Permits</li>
+  <li><span class="Bottom" ></span> Plumbing Permits</li>
+</ul>
+
+
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong" id = "myModal">
   Launch User Guide
 </button>
+<a class="btn btn-warning" href="#" role="button" id = "report" >View Report</a>
+<a class="btn btn-warning" href="https://phillytrees.azavea.com/" role="button" id = "azavea" target="_blank" rel="noopener noreferrer">View Canopy in More Detail</a>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -229,7 +242,7 @@
             <li id = "a"> This application allows users to view where construction permits are located! By overlaying completed construction permits with our 
               tree canopy statistics/ tree canopy loss risk predictions, users will notice that construction is very much related to tree canopy loss! Users are able to toggle the 
               statistics or predictions on and off to view exactly where construction has occured. Streets with high construction rates located in high risk tree canopy loss regions
-              should be prioritized by tree planters. Users can either view construction permits from 2008-2018, or 2019- Present. 
+              should be prioritized by tree planters. Users can either view construction permits from 2008-2018, or 2019- Present. Note: The more construction permit categories that are selected, the slower the web application will be due to the large amount of data and lack of funding for the project. 
             </li> 
             <li id = "a" > Most importantly, this application allows users to view which areas are at high risk for substantial tree canopy loss! Each grid cell is signed a "probability score", 
               which is the probability that the given grid cell will experience tree canopy loss in the future. The results are based on a model where we predicted where tree loss will occur 
@@ -242,7 +255,7 @@
             
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

@@ -22,7 +22,7 @@ p.main {
     width: 400px;
     top: 0;
     bottom: 0; 
-    padding: 20px;
+    padding: 15px;
     font-size: 16px;
 }
 
@@ -34,18 +34,18 @@ p.main {
 
 #positionCheck { 
   position: relative; 
-  right: 50px; 
+  right: 70px; 
 }
 
 
 .legendTitle { 
-  font-size: xx-large; 
+  font-size: large; 
   font-weight: bold; 
   position: absolute; 
   bottom: 200px; 
-  right: 200px; 
-  width: 130px; 
-  height: 50px;
+  right: 35px; 
+  width: 280px; 
+  height: 20px;
   background-color: rgb(249, 249, 249); 
   padding: 5px; 
 }
@@ -61,6 +61,8 @@ p.main {
   color : rgb(56, 90, 5); 
   font-weight: bold;
   font-size: 16px; 
+  position: relative; 
+  left: 13px; 
 }
 
 .custom-popup, .leaflet-popup-content-wrapper {
@@ -94,26 +96,30 @@ p.main {
   .subtitle1 { 
     font-size: 16px; 
     font-weight: bold;
-    padding: 5px; 
+    padding: 10px; 
+    position: relative; 
+    right: 14px; 
   }
 
   .subtitle2 { 
     font-size: 16px; 
     font-weight: bold;
     padding: 5px; 
+    position: relative; 
+    right: 12px; 
   }
 
   .subtitle3 { 
     font-size: 16x; 
     font-weight: bold;
-    padding: 5px; 
+    padding: 10px; 
+    position: relative; 
+    right: 7px; 
   }
 
   .link { 
     font-size: 12px; 
     padding: 20px; 
-    position: relative; 
-    top: 100px; 
   }
 
 
@@ -164,15 +170,67 @@ p.main {
   .legend .Four { background-color: #cccccc; border-color: black;}
   .legend .Bottom { background-color: #f7f7f7; border-color: black; }
 
+  .legendC {
+    list-style: none; 
+ position: absolute; 
+ bottom: 30px; 
+ right: 60px; 
+ background-color: rgb(249, 249, 249);
+ border-color: black;
+ background-size: 300px 100px;
+ height: 140px; 
+ width: 50px; 
+ padding-left: 10px;
+ padding-bottom: 30px;
+ padding-top: 10px;
+ padding-right: 0px; 
+ width: 260px; }
+ 
+
+ 
+ .legendC li { float: left; margin-right: 10px; }
+ .legendC span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 5px; }
+ /* your colors */
+ .legendC .Top { background-color: #252525; border-color: black; }
+ .legendC .Two{ background-color: #636363; border-color: black;}
+ .legendC .Three { background-color: #969696; border-color: black;}
+ .legendC .Four { background-color: #cccccc; border-color: black;}
+ .legendC .Five{ background-color: #f7f7f7; border-color: black; }
+ .legendC .Six{ background-color: #f7f7f7; border-color: black; }
+ .legendC .Bottom{ background-color: #f7f7f7; border-color: black; }
+
+
 
   #myModal { 
     position:absolute; 
-    top: 20px; 
-    right: 50px; 
-    height: 40px; 
+    top: 10px; 
+    right: 420px; 
+    height: 30px; 
     width: 170px; 
-    font-size: medium; 
+    font-size: small; 
+    font-weight: bold; 
   }
+
+  #report { 
+    position:absolute; 
+    top: 10px; 
+    right: 270px; 
+    height: 30px; 
+    width: 140px; 
+    font-size: small; 
+    font-weight: bold; 
+  }
+
+  #azavea{ 
+    position:absolute; 
+    top: 10px; 
+    right: 30px; 
+    height: 30px; 
+    width: 230px; 
+    font-size: small; 
+    font-weight: bold; 
+  }
+
 
   #exampleModalLongTitle { 
     font-weight: bold; 
@@ -181,7 +239,18 @@ p.main {
 
   #a { 
     margin : 10px; 
+    padding: 10px;
   } 
+
+  #years { 
+    position: relative; 
+    right: 12px; 
+  }
+
+  #scenarioD { 
+    position: relative; 
+    left: 9px; 
+  }
 
 
 

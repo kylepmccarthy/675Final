@@ -263,7 +263,7 @@ var AreaGainN = function(feature) {
   if(feature.properties.AreaGain> 560000 & feature.properties.AreaGain < 1030000){ 
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AAreaGain > 1030000 & feature.properties.AreaGain < 1635000){ 
+  if(feature.properties.AreaGain > 1030000 & feature.properties.AreaGain < 1635000){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaGain > 1635000){
@@ -281,7 +281,7 @@ var AreaGainF = function(feature) {
   if(feature.properties.AreaGain> 52850 & feature.properties.AreaGain < 89000){ 
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.AAreaGain > 89000 & feature.properties.AreaGain < 145800){ 
+  if(feature.properties.AreaGain > 89000 & feature.properties.AreaGain < 145800){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
   if(feature.properties.AreaGain > 145800){
@@ -308,19 +308,19 @@ var NetChangeN = function(feature) {
 };
 
 var NetChangeF = function(feature) {
-  if(feature.properties.GainMinusLoss < -63400){
+  if(feature.properties.netChange < -63400){
     return { fillColor: '#f7f7f7', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.GainMinusLoss > -63400 & feature.properties.GainMinusLoss < -31670){ 
+  if(feature.properties.netChange > -63400 & feature.properties.netChange< -31670){ 
     return { fillColor: '#cccccc', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.GainMinusLoss> -31670 & feature.properties.GainMinusLoss< -7280){ 
+  if(feature.properties.netChange> -31670 & feature.properties.netChange< -7280){ 
     return { fillColor: '#969696', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.GainMinusLoss > -7280 & feature.properties.GainMinusLoss< 0){ 
+  if(feature.properties.netChange > -7280 & feature.properties.netChange< 0){ 
     return { fillColor: '#636363', weight: .5, opacity: 1, color: 'red'};
   }
-  if(feature.properties.GainMinusLoss > 0){
+  if(feature.properties.netChange > 0){
     return { fillColor: '#252525', weight: .5, opacity: 1, color: 'red'};
     }
 };
@@ -897,7 +897,7 @@ function onEachFeatureStats(feature, layer) {
   "2018 Percent Tree Coverage:  " + feature.properties.pctCoverage18.toFixed(2) + "%" + "<br>" + 
   "Area Lost:  " + feature.properties.AreaLoss.toFixed(2) + " Square Feet" + "<br>" + 
   "Area Gained:  "+ feature.properties.AreaGain.toFixed(2) + " Square Feet" + "<br>" + 
-  "Net Change:  " + feature.properties.GainMinusLoss.toFixed(2) + "%" + " Square Feet" + "<br>" + 
+  "Net Change:  " + feature.properties.GainMinusLoss.toFixed(2) + " Square Feet" + "<br>" + 
   "Percent Loss:  " + feature.properties.pctLoss.toFixed(2)+ "%"  + "<br>" + 
   "Precent Gain:  " + feature.properties.pctGain.toFixed(2)+ "%"  + "<br>" + 
   "Percent Change: "+ feature.properties.pctChange.toFixed(2)+ "%" )
@@ -911,6 +911,7 @@ function onEachFeatureStats1(feature, layer) {
   "2018 Percent Tree Coverage:  " + feature.properties.pctCoverage18.toFixed(2)+ "%"  + "<br>" + 
   "Area Lost:  " + feature.properties.AreaLoss.toFixed(2) + " Square Feet"+ "<br>" + 
   "Area Gained:  "+ feature.properties.AreaGain.toFixed(2)+ " Square Feet" + "<br>" + 
+  "Net Change:  " + feature.properties.netChange.toFixed(2) + " Square Feet" + "<br>" + 
   "Percent Loss:  " + feature.properties.pctLoss.toFixed(2)+ "%"  + "<br>" + 
   "Precent Gain:  " + feature.properties.pctGain.toFixed(2) + "%"  + "<br>" + 
   "Percent Change: "+ feature.properties.pctChange.toFixed(2) + "%" )
@@ -1173,6 +1174,19 @@ $( "#gainedTreesF" ).click(function() {
 
 
 $( "#NetChange" ).click(function() {
+  $('#AreaCov').hide();
+  $('#pctLegend').hide();
+  $('#AreaLoss').hide();
+  $('#AreaGain').hide();
+  $('#NetChangeL').show();
+  $('#pctLossL').hide();
+  $('#pctGainL').hide();
+  $('#pctChangeL').hide();
+  $('#legends').show();
+  $('#sce').hide();
+});
+
+$( "#NetChangeF" ).click(function() {
   $('#AreaCov').hide();
   $('#pctLegend').hide();
   $('#AreaLoss').hide();
