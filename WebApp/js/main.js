@@ -1000,6 +1000,7 @@ var updateChart= function(){
   histogramChart.update()
 }
 
+document.getElementById("myModal").click();
 
 $( "#cov08" ).click(function() {
   $('#AreaCov').show();
@@ -1327,6 +1328,10 @@ $( "#S5" ).click(function() {
   $('#legends').show();
   $('#sce').show();
 });
+
+window.onload=function(){
+  document.getElementById("myModal").click();
+};
 
 
 

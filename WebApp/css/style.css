@@ -26,17 +26,27 @@ p.main {
     font-size: 16px;
 }
 
+#checkCont { 
+  max-width: 450px;
+  position: relative; 
+  right: 360px; 
+}
+
+#positionCheck { 
+  position: relative; 
+  right: 50px; 
+}
 
 
 .legendTitle { 
-  font-size: large; 
+  font-size: xx-large; 
   font-weight: bold; 
   position: absolute; 
   bottom: 200px; 
-  right: 239px; 
-  width: 85px; 
-  height: 30px;
-  background-color: white; 
+  right: 200px; 
+  width: 130px; 
+  height: 50px;
+  background-color: rgb(249, 249, 249); 
   padding: 5px; 
 }
 
@@ -101,7 +111,9 @@ p.main {
 
   .link { 
     font-size: 12px; 
-    padding: 20px
+    padding: 20px; 
+    position: relative; 
+    top: 100px; 
   }
 
 
@@ -112,10 +124,16 @@ p.main {
 
 
   .chart-container { 
-    width: 350px; 
-    height: 500px; 
     position: relative; 
     padding: 9px; 
+    top: 15px; 
+    height: 5000px; 
+  }
+
+
+
+  .list-group-item { 
+    padding: 0px; 
   }
 
 
@@ -124,7 +142,7 @@ p.main {
   position: absolute; 
   bottom: 30px; 
   right: 60px; 
-  background-color: white;
+  background-color: rgb(249, 249, 249);
   border-color: black;
   background-size: 300px 100px;
   height: 140px; 
@@ -147,6 +165,23 @@ p.main {
   .legend .Bottom { background-color: #f7f7f7; border-color: black; }
 
 
+  #myModal { 
+    position:absolute; 
+    top: 20px; 
+    right: 50px; 
+    height: 40px; 
+    width: 170px; 
+    font-size: medium; 
+  }
+
+  #exampleModalLongTitle { 
+    font-weight: bold; 
+    font-size: large; 
+  }
+
+  #a { 
+    margin : 10px; 
+  } 
 
 
 

@@ -66,14 +66,21 @@
               </div>
             <div class = "subtitle2"> View Construction Permits </div>
             <div class = "allPoly"> 
-              <h5> <input id= "ADDCheck" type= "checkbox"/>   Addition Permits </h5>
-              <h5> <form><input id= "ALTCheck" type= "checkbox"/>   Alteration Permits </h5></form> 
-              <h5> <form><input id= "DEMCheck" type= "checkbox"/>    Demolition Permits</h5></form> 
-              <h5> <form><input id= "ELCheck" type= "checkbox"/>    Electric Permits</h5></form>
-              <h5> <form><input id= "NCCheck" type= "checkbox"/>    New Construction Permits</h5></form>
-              <h5> <form><input id= "MCheck" type= "checkbox"/>    Mechanical Permits</h5></form>
-              <h5> <form><input id= "PCheck" type= "checkbox"/>    Plumbing Permits</h5></form>
-              </div>
+              <div class="container" id= "checkCont">
+                <div class="row">
+                  <div class="col-sm">
+                    <h5> <input id= "ADDCheck" type= "checkbox"/>   Addition Permits </h5>
+                    <h5> <input id= "ALTCheck" type= "checkbox"/>   Alteration Permits </h5>
+                    <h5> <input id= "DEMCheck" type= "checkbox"/>    Demolition Permits</h5>
+                    <h5> <input id= "ELCheck" type= "checkbox"/>    Electric Permits</h5>
+                  </div>
+                  <div class ="col-sm" id = "positionCheck"> 
+                    <h5> <input id= "NCCheck" type= "checkbox"/>    New Construction Permits</h5>
+                    <h5> <input id= "MCheck" type= "checkbox"/>    Mechanical Permits</h5>
+                    <h5> <input id= "PCheck" type= "checkbox"/>    Plumbing Permits</h5>
+                  </div>
+                </div>
+            </div>
           </div>
           <div class="btn-toolbar"> 
             <button type="button" id = "CON0818" class="btn btn-dark active" Active>2008 - 2018 </button>
@@ -104,6 +111,7 @@
          </div>
             <div class="chart-container">
               <canvas id="myChart"></canvas>
+              
               <div class = "link"> <a href="https://phillytrees.azavea.com/" target="_blank" rel="noopener noreferrer">Click to view the Tree Canopy Change in more detail!</a></div>
           </div>
           </div>
@@ -195,6 +203,50 @@
   <li><span class="Four" ></span> Low Percent Loss Risk</li>
   <li><span class="Bottom" ></span> Very Low Percent Risk</li>
 </ul>
+
+
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong" id = "myModal">
+  Launch User Guide
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Welcome to Canopy View!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> This application was designed to help prioritize tree planting initatives in Philadelphia. The web application has 3 distinct features: 
+          <ol> 
+            <li id = "a"> This application allows you to view the state of tree canopy in Philadelphia. Users can view 11 distinct tree canopy statistics by 
+              clicking on our interactive dropdown menus. User's can view these statiscs in either neighborhood or grid cell (150m x 150m) form. 
+              This feature allows user's to understand to gain a thourough understanding of the current state of tree canopy in a given area. 
+            </li>
+            <li id = "a"> This application allows users to view where construction permits are located! By overlaying completed construction permits with our 
+              tree canopy statistics/ tree canopy loss risk predictions, users will notice that construction is very much related to tree canopy loss! Users are able to toggle the 
+              statistics or predictions on and off to view exactly where construction has occured. Streets with high construction rates located in high risk tree canopy loss regions
+              should be prioritized by tree planters. Users can either view construction permits from 2008-2018, or 2019- Present. 
+            </li> 
+            <li id = "a" > Most importantly, this application allows users to view which areas are at high risk for substantial tree canopy loss! Each grid cell is signed a "probability score", 
+              which is the probability that the given grid cell will experience tree canopy loss in the future. The results are based on a model where we predicted where tree loss will occur 
+              based on attributes associated with regions that have had previously experienced significant tree loss. Since construction is highly related to tree loss in Philadelphia, 
+              users have the option to view the substantial tree canopy loss risk in differing construction scenarios. Although not substantial, you will notice through our interactive bar graph that as construction permits increase, 
+              the risk of tree canopy also increased. 
+            </li>
+          </ol>
+          <p> Please view our report for more information regarding the model. </p>  
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
