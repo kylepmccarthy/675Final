@@ -26,33 +26,47 @@ p.main {
     font-size: 16px;
 }
 
-#checkCont { 
-  max-width: 450px;
-  position: relative; 
-  right: 360px; 
-}
 
-#positionCheck { 
-  position: relative; 
-  right: 70px; 
-}
 
+#construction { 
+  height: 170px;
+  width: 400px; 
+  flex: 1 0 10px; 
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative; 
+  right: 18px; 
+  margin:-30 -15px;
+  display: inline-flex;
+}
 
 .legendTitle { 
   font-size: large; 
   font-weight: bold; 
   position: absolute; 
   bottom: 200px; 
-  right: 35px; 
+  right: 10px; 
   width: 280px; 
-  height: 20px;
+  height: 30px;
+  background-color: rgb(249, 249, 249); 
+  padding: 5px; 
+}
+
+.legendTitle1 { 
+  font-size: large; 
+  font-weight: bold; 
+  position: absolute; 
+  bottom: 450px; 
+  right: 10px; 
+  width: 280px; 
+  height: 30px;
   background-color: rgb(249, 249, 249); 
   padding: 5px; 
 }
 
 .break { 
   font-weight : bold ;
-  top: 10px
 }
 
 
@@ -147,7 +161,7 @@ p.main {
      list-style: none; 
   position: absolute; 
   bottom: 30px; 
-  right: 60px; 
+  right: 30px; 
   background-color: rgb(249, 249, 249);
   border-color: black;
   background-size: 300px 100px;
@@ -173,12 +187,12 @@ p.main {
   .legendC {
     list-style: none; 
  position: absolute; 
- bottom: 30px; 
- right: 60px; 
+ bottom: 250px; 
+ right: 30px; 
  background-color: rgb(249, 249, 249);
  border-color: black;
  background-size: 300px 100px;
- height: 140px; 
+ height: 170px; 
  width: 50px; 
  padding-left: 10px;
  padding-bottom: 30px;
@@ -189,15 +203,15 @@ p.main {
 
  
  .legendC li { float: left; margin-right: 10px; }
- .legendC span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 5px; }
+ .legendC span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 5px; border-radius: 50%; ;  }
  /* your colors */
- .legendC .Top { background-color: #252525; border-color: black; }
- .legendC .Two{ background-color: #636363; border-color: black;}
- .legendC .Three { background-color: #969696; border-color: black;}
- .legendC .Four { background-color: #cccccc; border-color: black;}
- .legendC .Five{ background-color: #f7f7f7; border-color: black; }
- .legendC .Six{ background-color: #f7f7f7; border-color: black; }
- .legendC .Bottom{ background-color: #f7f7f7; border-color: black; }
+ .legendC .Top { background-color: #A38A00; border-color: black; }
+ .legendC .Two{ background-color: #fdc086; border-color: black;}
+ .legendC .Three { background-color: #7fc97f; border-color: black;}
+ .legendC .Four { background-color: #beaed4; border-color: black;}
+ .legendC .Five{ background-color: #f0027f; border-color: black; }
+ .legendC .Six{ background-color: #386cb0; border-color: black; }
+ .legendC .Bottom{ background-color: #bf5b17; border-color: black; }
 
 
 
@@ -231,6 +245,12 @@ p.main {
     font-weight: bold; 
   }
 
+  #BenFrank { 
+    position: relative; 
+    bottom: 50px; 
+    right: 7px; 
+  }
+
 
   #exampleModalLongTitle { 
     font-weight: bold; 
@@ -243,9 +263,17 @@ p.main {
   } 
 
   #years { 
-    position: relative; 
-    right: 12px; 
+    padding: 0; 
   }
+
+  #b{ 
+    padding-bottom: 4px; 
+  }
+
+
+#space { 
+  padding: 10px; 
+}
 
   #scenarioD { 
     position: relative; 

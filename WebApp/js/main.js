@@ -520,13 +520,18 @@ $('input[id ="ELCheck"]').click(function () {
   if ($('input[id ="ELCheck"]').prop('checked')) { 
     if(i == 0) {
        ajaxEL(electric, ElectricStyle)
+       $('#ConL').show();
+       $('#legends1').show();
     } 
     else{ 
       ajaxEL(electric1, ElectricStyle)
+      $('#ConL').show();
+      $('#legends1').show();
     }
   }
   else{ 
     map.removeLayer(featureEL)
+    constLegend()
   }
 });
 
@@ -534,13 +539,18 @@ $('input[id ="NCCheck"]').click(function () {
   if ($('input[id ="NCCheck"]').prop('checked')) { 
     if (i == 0 ) { 
       ajaxNC(newconst, newStyle, FilterYear)
+      $('#ConL').show();
+      $('#legends1').show();
     } 
     else { 
       ajaxNC(newconst, newStyle, FilterYear2)
+      $('#ConL').show();
+      $('#legends1').show();
     }
   }
   else{ 
     map.removeLayer(featureNC)
+    constLegend()
   }
 });
 
@@ -548,13 +558,18 @@ $('input[id ="DEMCheck"]').click(function () {
   if ($('input[id ="DEMCheck"]').prop('checked')) { 
     if (i == 0){ 
       ajaxDEMO(demolition, DeomoStyle, FilterYear)
+      $('#ConL').show();
+      $('#legends1').show();
     } 
     else { 
       ajaxDEMO(demolition, DeomoStyle, FilterYear2)
+      $('#ConL').show();
+      $('#legends1').show();
     }
   }
   else{ 
     map.removeLayer(featureDEMO)
+    constLegend()
   }
 });
 
@@ -562,13 +577,18 @@ $('input[id ="ALTCheck"]').click(function () {
   if ($('input[id ="ALTCheck"]').prop('checked')) { 
     if(i == 0) { 
       ajaxALT(alteration, AltStyle)
+      $('#ConL').show();
+      $('#legends1').show();
     } 
     else{ 
       ajaxALT(alteration1, AltStyle)
+      $('#ConL').show();
+      $('#legends1').show();
     }
   }
   else{ 
     map.removeLayer(featureALT)
+    constLegend()
   }
 });
 
@@ -576,13 +596,18 @@ $('input[id ="ADDCheck"]').click(function () {
   if ($('input[id ="ADDCheck"]').prop('checked')) { 
     if(i == 0) { 
     ajaxADD(addition, AddStyle, FilterYear)
+    $('#ConL').show();
+    $('#legends1').show();
     } 
     else { 
       ajaxADD(addition, AddStyle, FilterYear2)
+      $('#ConL').show();
+      $('#legends1').show();
     }
   }
   else{ 
     map.removeLayer(featureADD) 
+    constLegend()
   }
 });
 
@@ -590,13 +615,19 @@ $('input[id ="PCheck"]').click(function () {
   if ($('input[id ="PCheck"]').prop('checked')) { 
     if(i == 0) { 
     ajaxP(plum, PlumStyle)
+    $('#ConL').show();
+    $('#legends1').show();
     } 
     else { 
       ajaxP(plum2, PlumStyle)
+      $('#ConL').show();
+      $('#legends1').show();
+      
     }
   }
   else{ 
     map.removeLayer(featureP) 
+    constLegend()
   }
 });
 
@@ -604,13 +635,18 @@ $('input[id ="MCheck"]').click(function () {
   if ($('input[id ="MCheck"]').prop('checked')) { 
     if(i == 0) { 
     ajaxM(Mechanical, MechanicalcStyle, FilterYear)
+    $('#ConL').show();
+    $('#legends1').show();
     } 
     else { 
       ajaxM(Mechanical, MechanicalcStyle, FilterYear2)
+      $('#ConL').show();
+      $('#legends1').show();
     }
   }
   else{ 
     map.removeLayer(featureM) 
+    constLegend()
   }
 });
 
@@ -628,6 +664,7 @@ var NDropDown2Bar = function(string, style, dataset, Filter, pop){ $( string ).c
     histogramBins = [0, 0, 0, 0, 0]; 
   ajaxfunc(dataset, style, Filter, pop).done(function (){ 
     if(histogramChart === undefined) { 
+      $('#BenFrank').hide();
       BuildChart() 
     }
     else{ updateChart()} 
@@ -676,6 +713,17 @@ toggle between hiding and showing the dropdown content */
 $('#clearMap').on('click', function(e) {
   if (map.hasLayer(featureGroups)){ 
   map.removeLayer(featureGroups)
+  $('#legends').hide();
+  $('#AreaCov').hide();
+  $('#pctLegend').hide();
+  $('#AreaLoss').hide();
+  $('#AreaGain').hide();
+  $('#NetChangeL').hide();
+  $('#pctLossL').hide();
+  $('#pctGainL').hide();
+  $('#pctChangeL').hide();
+  $('#legends').hide();
+  $('#sce').hide();
   } 
 });
 
@@ -684,7 +732,6 @@ $('#MapOn').on('click', function(e) {
   if (map.hasLayer(featureGroups) == false){ 
   map.addLayer(featureGroups) 
   featureGroups.bringToBack(); 
-
   } } 
 });
 
@@ -1346,6 +1393,14 @@ $( "#S5" ).click(function() {
 window.onload=function(){
   document.getElementById("myModal").click();
 };
+
+var constLegend = function() { 
+  if ($('#ADDCheck').prop('checked') == false &  $('#ALTCheck').prop('checked') == false & $('#ALTCheck').prop('checked') == false & $('#DEMCheck').prop('checked') == false 
+  & $('#ELCheck').prop('checked') == false  & $('#MCheck').prop('checked') == false  & $('#NCCheck').prop('checked') == false & $('#PCheck').prop('checked') == false ) { 
+    $('#ConL').hide();
+      $('#legends1').hide();
+  }
+}
 
 
 
