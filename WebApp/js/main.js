@@ -1032,11 +1032,21 @@ histogramChart = new Chart(ctx, {
         }]
     },
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+      plugins: {
+        title: {
+            display: true,
+            text: s
         }
+    }, 
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'probability'
+            }
+          }]
+        }
+        
     }
 });
 
@@ -1327,6 +1337,8 @@ $( "#pctChangeF" ).click(function() {
   $('#sce').hide();
 });
 
+var s; 
+
 $( "#S1" ).click(function() {
   $('#AreaCov').hide();
   $('#pctLegend').hide();
@@ -1338,6 +1350,7 @@ $( "#S1" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
+  s = "Tree Canopy Risk with 50% Decrease in Completed Construction Permits"
 });
 
 $( "#S2" ).click(function() {
@@ -1351,6 +1364,7 @@ $( "#S2" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
+  s = "Tree Canopy Risk with 25% Decrease in Completed Construction Permits"
 });
 
 $( "#S3" ).click(function() {
@@ -1364,6 +1378,7 @@ $( "#S3" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
+  s = "Tree Canopy Risk with Current Construction Scenario"
 });
 
 
@@ -1378,6 +1393,7 @@ $( "#S4" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
+  s = "Tree Canopy Risk with 25% Increase in Completed Construction Permits"
 });
 
 $( "#S5" ).click(function() {
@@ -1391,6 +1407,7 @@ $( "#S5" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
+  s =  "Tree Canopy Risk with 50% Increase in Completed Construction Permits"
 });
 
 window.onload=function(){
