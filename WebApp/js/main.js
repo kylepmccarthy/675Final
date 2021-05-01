@@ -725,6 +725,9 @@ $('#clearMap').on('click', function(e) {
   $('#legends').hide();
   $('#sce').hide();
   } 
+  $("#firstDrop").html("View Tree Canopy Statistics by Neighborhood");
+  $("#secondDrop").html("View Tree Canopy Statistics by Grid Cell");
+  $("#thirdDrop").html("View Tree Canopy Construction Scenarios");
 });
 
 $('#MapOn').on('click', function(e) {
@@ -1401,6 +1404,50 @@ var constLegend = function() {
       $('#legends1').hide();
   }
 }
+
+
+
+x = " bubs"
+
+$(function(){
+
+  $("#firstDrop1 li a").click(function(){
+
+    $("#firstDrop:first-child").text($(this).text());
+    $("#firstDrop:first-child").val($(this).text());
+    $("#secondDrop").html("View Tree Canopy Statistics by Grid Cell");
+    $("#thirdDrop").html("View Tree Canopy Construction Scenarios");
+ });
+
+});
+
+$(function(){
+
+  $("#secondDrop1 li a").click(function(){
+
+    $("#secondDrop:first-child").text($(this).text());
+    $("#secondDrop:first-child").val($(this).text());
+    $("#firstDrop").html("View Tree Canopy Statistics by Neighborhood");
+    $("#thirdDrop").html("View Tree Canopy Construction Scenarios");
+
+ });
+
+});
+
+
+$(function(){
+
+  $("#thirdDrop1 li a").click(function(){
+
+    $("#thirdDrop:first-child").text($(this).text());
+    $("#thirdDrop:first-child").val($(this).text());
+    $("#firstDrop").html("View Tree Canopy Statistics by Neighborhood");
+    $("#secondDrop").html("View Tree Canopy Statistics by Grid Cell");
+
+ });
+
+});
+
 
 
 
