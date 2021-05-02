@@ -41,6 +41,7 @@ var featureDEMO;
 var featureP; 
 var featureM; 
 var histogramChart; 
+var bound; 
 
 var histogramBins = [0, 0, 0, 0, 0] 
 
@@ -654,11 +655,13 @@ $('input[id ="MCheck"]').click(function () {
 var NDropDown1 = function(string, style, dataset, Filter, pop){ $( string ).click(function() {
   if(featureGroups != undefined){
     map.removeLayer(featureGroups) }  
+    map.removeLayer(bound); 
   ajaxfunc(dataset, style, Filter, pop); 
 });
 } 
 
 var NDropDown2Bar = function(string, style, dataset, Filter, pop){ $( string ).click(function() {
+  map.removeLayer(bound)
   if(featureGroups != undefined){
     map.removeLayer(featureGroups) }  
     histogramBins = [0, 0, 0, 0, 0]; 
@@ -728,6 +731,8 @@ $('#clearMap').on('click', function(e) {
   $("#firstDrop").html("View Tree Canopy Statistics by Neighborhood");
   $("#secondDrop").html("View Tree Canopy Statistics by Grid Cell");
   $("#thirdDrop").html("View Tree Canopy Construction Scenarios");
+
+  ajaxBound() 
 });
 
 $('#MapOn').on('click', function(e) {
@@ -861,6 +866,18 @@ ajaxM = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data)
 }).addTo(map) 
 });
 } 
+
+ajaxBound = function(){ $.ajax(PhiladelphiaBounds).done(function(data) {
+  var parsedData = JSON.parse(data);
+  bound = L.geoJson(parsedData, {
+    color: "black", 
+    fillOpacity: 0,
+    weight: 0.8, 
+}).addTo(map) 
+});
+} 
+
+ajaxBound() 
 
 let i = 0; 
 
@@ -1473,6 +1490,8 @@ $(function(){
  });
 
 });
+
+
 
 
 
