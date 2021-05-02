@@ -676,7 +676,7 @@ NDropDown1("#cov08", CoverageStyle, Neighborhood, FilterMain, onEachFeatureStats
 NDropDown1("#cov18", CoverageStyle18,  Neighborhood, FilterMain, onEachFeatureStats)
 NDropDown1("#pctCov08", pctCoverageStyle, Neighborhood, FilterMain, onEachFeatureStats)
 NDropDown1("#pctCove18", pctCoverageStyle18, Neighborhood, FilterMain, onEachFeatureStats)
-NDropDown1("#lostTrees", AreaLossN, Neighborhood, FilterMain), onEachFeatureStats
+NDropDown1("#lostTrees", AreaLossN, Neighborhood, FilterMain, onEachFeatureStats) 
 NDropDown1("#gainedTrees", AreaGainN, Neighborhood, FilterMain, onEachFeatureStats)
 NDropDown1("#NetChange", NetChangeN, Neighborhood, FilterMain, onEachFeatureStats)
 NDropDown1("#pctLoss", pctLossN, Neighborhood, FilterMain, onEachFeatureStats)
