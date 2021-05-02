@@ -738,8 +738,39 @@ $('#clearMap').on('click', function(e) {
 $('#MapOn').on('click', function(e) {
   if(featureGroups != undefined){ 
   if (map.hasLayer(featureGroups) == false){ 
-  map.addLayer(featureGroups) 
+  map.addLayer(featureGroups) ; 
+  map.removeLayer(bound); 
   featureGroups.bringToBack(); 
+  if (y == 1){ 
+    y1() 
+  }
+  if (y == 2){ 
+    y2() 
+  }
+  if (y == 3){ 
+    y3() 
+  }
+  if (y == 3){ 
+    y3() 
+  }
+  if (y == 4){ 
+    y4() 
+  }
+  if (y == 5){ 
+    y5() 
+  }
+  if (y == 6){ 
+    y6() 
+  }
+  if (y == 7){ 
+    y7() 
+  }
+  if (y == 8){ 
+    y8() 
+  }
+  if (y == 9){ 
+    y9() 
+  }
   } } 
 });
 
@@ -1089,7 +1120,9 @@ var updateChart= function(){
 
 document.getElementById("myModal").click();
 
-$( "#cov08" ).click(function() {
+var y; 
+
+var y1 = function() { 
   $('#AreaCov').show();
   $('#pctLegend').hide();
   $('#AreaLoss').hide();
@@ -1100,339 +1133,244 @@ $( "#cov08" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').hide();
+}
+
+var y2 = function() { 
+  $('#AreaCov').hide();
+  $('#pctLegend').show();
+  $('#AreaLoss').hide();
+  $('#AreaGain').hide();
+  $('#NetChangeL').hide();
+  $('#pctLossL').hide();
+  $('#pctGainL').hide();
+  $('#pctChangeL').hide();
+  $('#legends').show();
+  $('#sce').hide();
+}
+
+var y3 = function() { 
+  $('#AreaCov').hide();
+  $('#pctLegend').hide();
+  $('#AreaLoss').show();
+  $('#AreaGain').hide();
+  $('#NetChangeL').hide();
+  $('#pctLossL').hide();
+  $('#pctGainL').hide();
+  $('#pctChangeL').hide();
+  $('#legends').show();
+  $('#sce').hide();
+}
+
+var y4 = function () { 
+  $('#AreaCov').hide();
+  $('#pctLegend').hide();
+  $('#AreaLoss').hide();
+  $('#AreaGain').show();
+  $('#NetChangeL').hide();
+  $('#pctLossL').hide();
+  $('#pctGainL').hide();
+  $('#pctChangeL').hide();
+  $('#legends').show();
+  $('#sce').hide();
+}
+
+var y5 = function() { 
+  $('#AreaCov').hide();
+  $('#pctLegend').hide();
+  $('#AreaLoss').hide();
+  $('#AreaGain').hide();
+  $('#NetChangeL').show();
+  $('#pctLossL').hide();
+  $('#pctGainL').hide();
+  $('#pctChangeL').hide();
+  $('#legends').show();
+  $('#sce').hide();
+}
+
+var y6 = function() { 
+  $('#AreaCov').hide();
+  $('#pctLegend').hide();
+  $('#AreaLoss').hide();
+  $('#AreaGain').hide();
+  $('#NetChangeL').hide();
+  $('#pctLossL').show();
+  $('#pctGainL').hide();
+  $('#pctChangeL').hide();
+  $('#legends').show();
+  $('#sce').hide();
+}
+
+var y7 = function() { 
+  $('#AreaCov').hide();
+  $('#pctLegend').hide();
+  $('#AreaLoss').hide();
+  $('#AreaGain').hide();
+  $('#NetChangeL').hide();
+  $('#pctLossL').hide();
+  $('#pctGainL').show();
+  $('#pctChangeL').hide();
+  $('#legends').show();
+  $('#sce').hide();
+}
+
+var y8 = function () { 
+  $('#AreaCov').hide();
+  $('#pctLegend').hide();
+  $('#AreaLoss').hide();
+  $('#AreaGain').hide();
+  $('#NetChangeL').hide();
+  $('#pctLossL').hide();
+  $('#pctGainL').hide();
+  $('#pctChangeL').show();
+  $('#legends').show();
+  $('#sce').hide();
+}
+
+var y9 = function () { 
+  $('#AreaCov').hide();
+  $('#pctLegend').hide();
+  $('#AreaLoss').hide();
+  $('#AreaGain').hide();
+  $('#NetChangeL').hide();
+  $('#pctLossL').hide();
+  $('#pctGainL').hide();
+  $('#pctChangeL').hide();
+  $('#legends').show();
+  $('#sce').show();
+}
+
+
+$( "#cov08" ).click(function() {
+  y1()
+  y = 1
 });
 
 $( "#cov18" ).click(function() {
-  $('#AreaCov').show();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y1() 
+  y = 1
 });
 
 $( "#cov08F" ).click(function() {
-  $('#AreaCov').show();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+   y1() 
+  y = 1
 });
 
 $( "#cov08F" ).click(function() {
-  $('#AreaCov').show();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y1() 
+  y = 1
 });
 
 $( "#pctCov08" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').show();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y2() 
+  y = 2 
 });
 
 $( "#pctCove18" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').show();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y2() 
+  y = 2
 });
 
 $( "#pctCov08F" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').show();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y2() 
+  y = 2
 });
 
 $( "#pctCove18F" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').show();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y2() 
+  y = 2
 });
 
 $( "#lostTrees" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').show();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y3() 
+  y = 3
 });
 
 $( "#lostTreesF" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').show();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y3() 
+  y = 3
 });
 
 $( "#gainedTrees" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').show();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y4() 
+  y = 4
 });
 
 $( "#gainedTreesF" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').show();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
-});
-
-$( "#gainedTreesF" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').show();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y4() 
+  y = 4
 });
 
 
 $( "#NetChange" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').show();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y5() 
+  y = 5
 });
 
 $( "#NetChangeF" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').show();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y5() 
+  y = 5
 });
 
 $( "#pctLoss" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').show();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y6() 
+  y = 6 
 });
 
 $( "#pctLossF" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').show();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y6()
+  y = 6 
 });
 
 $( "#pctGain" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').show();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+  y7() 
+  y = 7 
 });
 
 $( "#pctGainF" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').show();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').hide();
+ y7() 
+  y = 7 
 });
 
 $( "#pctChange" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').show();
-  $('#legends').show();
-  $('#sce').hide();
+  y8() 
+  y = 8
 });
 
 $( "#pctChangeF" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').show();
-  $('#legends').show();
-  $('#sce').hide();
+  y8() 
+  y = 8 
 });
 
 let s = 0 
 
 $( "#S1" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').show();
+  y9() 
+  y = 9
   s =  "50% Decrease in Construction Scenario"; 
 });
 
 $( "#S2" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').show();
+  y9() ; 
+  y = 9; 
   s = "25% Decrease in Construction Scenario"; 
 });
 
 $( "#S3" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').show();
+  y9() ; 
+  y = 9; 
   s = "Current Construction Scenario"; 
 });
 
 
 $( "#S4" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').show();
+  y9() 
+  y = 9; 
   s = "25% Increase in Construction Scenario"; 
 });
 
 $( "#S5" ).click(function() {
-  $('#AreaCov').hide();
-  $('#pctLegend').hide();
-  $('#AreaLoss').hide();
-  $('#AreaGain').hide();
-  $('#NetChangeL').hide();
-  $('#pctLossL').hide();
-  $('#pctGainL').hide();
-  $('#pctChangeL').hide();
-  $('#legends').show();
-  $('#sce').show();
+  y9() ; 
+  y = 9; 
   s =  "50% Increase in Construction Scenario"; 
 });
 
