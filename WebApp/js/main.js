@@ -1449,9 +1449,6 @@ var constLegend = function() {
 }
 
 
-
-x = " bubs"
-
 $(function(){
 
   $("#firstDrop1 li a").click(function(){
