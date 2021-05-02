@@ -1032,20 +1032,28 @@ histogramChart = new Chart(ctx, {
         }]
     },
     options: {
+      
       plugins: {
+        legend: false, 
         title: {
             display: true,
-            text: s
+            text: ['Risk for Substantial Tree Canopy Loss',s]
         }
     }, 
         scales: {
-          yAxes: [{
-            scaleLabel: {
+          yAxes: {
+            title: {
               display: true,
-              labelString: 'probability'
+              text: '# of Grid Cells'
             }
-          }]
-        }
+          },
+          xAxes: {
+            title: {
+              display: true,
+              text: 'Risk Category'
+            }
+          }
+        }, 
         
     }
 });
@@ -1350,7 +1358,7 @@ $( "#S1" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s = "Tree Canopy Risk with 50% Decrease in Completed Construction Permits"
+  s =  "50% Decrease in Construction Scenario"
 });
 
 $( "#S2" ).click(function() {
@@ -1364,7 +1372,7 @@ $( "#S2" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s = "Tree Canopy Risk with 25% Decrease in Completed Construction Permits"
+  s = "25% Decrease in Construction Scenario"
 });
 
 $( "#S3" ).click(function() {
@@ -1378,7 +1386,7 @@ $( "#S3" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s = "Tree Canopy Risk with Current Construction Scenario"
+  s = "Current Construction Scenario"
 });
 
 
@@ -1393,7 +1401,7 @@ $( "#S4" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s = "Tree Canopy Risk with 25% Increase in Completed Construction Permits"
+  s = "25% Increase in Construction Scenario"
 });
 
 $( "#S5" ).click(function() {
@@ -1407,7 +1415,7 @@ $( "#S5" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s =  "Tree Canopy Risk with 50% Increase in Completed Construction Permits"
+  s =  "50% Increase in Construction Scenario"
 });
 
 window.onload=function(){
