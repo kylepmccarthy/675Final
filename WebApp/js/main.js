@@ -872,7 +872,7 @@ ajaxBound = function(){ $.ajax(PhiladelphiaBounds).done(function(data) {
   bound = L.geoJson(parsedData, {
     color: "black", 
     fillOpacity: 0,
-    weight: 0.8, 
+    weight: 1.5, 
 }).addTo(map) 
 });
 } 
