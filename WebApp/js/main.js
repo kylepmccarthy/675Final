@@ -1037,7 +1037,7 @@ histogramChart = new Chart(ctx, {
         legend: false, 
         title: {
             display: true,
-            text: ['Risk for Substantial Tree Canopy Loss',s]
+            text: ["Substantial Tree Canopy Risk by Grid Cell Count", s]
         }
     }, 
         scales: {
@@ -1065,7 +1065,8 @@ histogramChart = new Chart(ctx, {
 var histogramBins1 = [0, 0, 0, 0, 0] 
 
 var updateChart= function(){ 
-  histogramChart.data.datasets[0].data = histogramBins 
+  histogramChart.data.datasets[0].data = histogramBins ; 
+  histogramChart.options.plugins.title.text = ["Substantial Tree Canopy Risk by Grid Cell Count", s]
   histogramChart.update()
 }
 
@@ -1345,7 +1346,7 @@ $( "#pctChangeF" ).click(function() {
   $('#sce').hide();
 });
 
-var s; 
+let s = 0 
 
 $( "#S1" ).click(function() {
   $('#AreaCov').hide();
@@ -1358,7 +1359,7 @@ $( "#S1" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s =  "50% Decrease in Construction Scenario"
+  s =  "50% Decrease in Construction Scenario"; 
 });
 
 $( "#S2" ).click(function() {
@@ -1372,7 +1373,7 @@ $( "#S2" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s = "25% Decrease in Construction Scenario"
+  s = "25% Decrease in Construction Scenario"; 
 });
 
 $( "#S3" ).click(function() {
@@ -1386,7 +1387,7 @@ $( "#S3" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s = "Current Construction Scenario"
+  s = "Current Construction Scenario"; 
 });
 
 
@@ -1401,7 +1402,7 @@ $( "#S4" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s = "25% Increase in Construction Scenario"
+  s = "25% Increase in Construction Scenario"; 
 });
 
 $( "#S5" ).click(function() {
@@ -1415,7 +1416,7 @@ $( "#S5" ).click(function() {
   $('#pctChangeL').hide();
   $('#legends').show();
   $('#sce').show();
-  s =  "50% Increase in Construction Scenario"
+  s =  "50% Increase in Construction Scenario"; 
 });
 
 window.onload=function(){
