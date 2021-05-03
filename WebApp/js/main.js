@@ -31,7 +31,7 @@ var alteration1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main
 var plum2 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/PlumPost2.geojson "
 var Mechanical = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Mechanical.geojson"
 
-var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/trySce3.geojson"
+var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/trySce4.geojson"
 
 var featureGroups; 
 var featureEL;
