@@ -703,8 +703,8 @@ NDropDown1("#pctChangeF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
 NDropDown2Bar("#S1", ResultStyle, results, FilterResults1, onEachFeatureStats2)
 NDropDown2Bar("#S2", ResultStyle, results, FilterResults2, onEachFeatureStats2)
 NDropDown2Bar("#S3", ResultStyle, results, FilterResults3, onEachFeatureStats2)
-NDropDown2Bar("#S4", ResultStyle, results, FilterResults4, onEachFeatureStats2)
-NDropDown2Bar("#S5", ResultStyle, results, FilterResults5, onEachFeatureStats2)
+NDropDown2Bar("#S4", ResultStyle, results, FilterResults5, onEachFeatureStats2)
+NDropDown2Bar("#S5", ResultStyle, results, FilterResults4, onEachFeatureStats2)
 
 
 
