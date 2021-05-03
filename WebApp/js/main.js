@@ -26,11 +26,12 @@ var plum = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/P
 var newconst = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/NC3.geojson"
 var addition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/AddR4.geojson"
 var demolition = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/DemoR5.geojson"
-var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/scenarios.geojson"
 var electric1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/electricRPOST2.geojson"
 var alteration1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/alterationRPOST2.geojson"
 var plum2 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/PlumPost2.geojson "
 var Mechanical = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Mechanical.geojson"
+
+var results = "https://raw.githubusercontent.com/palakagr/tree-canopy-loss/main/constscenario1.geojson"
 
 var featureGroups; 
 var featureEL;
@@ -467,7 +468,7 @@ let FilterResults3 = function(feature) {
 };
 
 let FilterResults4 = function(feature) {
-  if (feature.properties.Scenario == 'const_25more') {
+  if (feature.properties.Scenario == 'const_50more') {
     return true;
   } else {
     return false; 
@@ -475,7 +476,7 @@ let FilterResults4 = function(feature) {
 };
 
 let FilterResults5 = function(feature) {
-  if (feature.properties.Scenario == 'const_50more') {
+  if (feature.properties.Scenario == 'const_100more') {
     return true;
   } else {
     return false; 
@@ -664,7 +665,7 @@ var NDropDown2Bar = function(string, style, dataset, Filter, pop){ $( string ).c
   map.removeLayer(bound)
   if(featureGroups != undefined){
     map.removeLayer(featureGroups) }  
-    histogramBins = [0, 0, 0, 0, 0]; 
+    histogramBins = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; 
   ajaxfunc(dataset, style, Filter, pop).done(function (){ 
     if(histogramChart === undefined) { 
       $('#BenFrank').hide();
@@ -1025,6 +1026,7 @@ function onEachFeatureConst(feature, layer) {
   )
 }
 
+
 var countCat = function (feature) { 
   if(feature.properties.Risk_Cat === "Very Low"){ 
     histogramBins[0] = histogramBins[0] + 1
@@ -1045,7 +1047,7 @@ var countCat = function (feature) {
 
 
 function onEachFeatureStats2(feature, layer) { 
-  layer.bindPopup("Probaility of Significant Tree Loss: " + feature.properties.Probs.toFixed(2) + "%" + "<br>" + 
+  layer.bindPopup("Probaility of Substantial Tree Loss: " + feature.properties.Probs.toFixed(2) + "%" + "<br>" + 
   "Tree Loss Severity: " + feature.properties.Risk_Cat + "<br>") ; 
   countCat(feature)
 }
