@@ -31,7 +31,7 @@ var alteration1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main
 var plum2 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/PlumPost2.geojson "
 var Mechanical = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Mechanical.geojson"
 
-var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/ScenB.geojson"
+var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Scen2.geojson"
 
 var featureGroups; 
 var featureEL;
@@ -49,44 +49,44 @@ var histogramBins = [0, 0, 0, 0, 0]
 
 var ElectricStyle = function(feature) {
   switch (feature.properties.permitdescription) {
-    case 'ELECTRICAL PERMIT' : return {color: '#beaed4'};
+    case 'ELECTRICAL PERMIT' : return {color: '#B9D9EB'};
   }
 };
 
 var MechanicalcStyle = function(feature) {
   switch (feature.properties.permitdescription) {
-    case 'MECHANICAL PERMIT' : return {color: '#f0027f'};
+    case 'MECHANICAL PERMIT' : return {color: '#D982B5'};
   }
 };
 
 var PlumStyle = function(feature) {
   switch (feature.properties.permitdescription) {
-    case 'PLUMBING PERMIT' : return {color: '#bf5b17'};
+    case 'PLUMBING PERMIT' : return {color: '#90EE90'};
   }
 };
 
 var DeomoStyle = function(feature) {
   switch (feature.properties.permitdescription) {
-    case 'DEMOLITION PERMIT' : return {color: '#7fc97f'};
+    case 'DEMOLITION PERMIT' : return {color: '#9C51B6'};
   }
 };
 
 var AltStyle = function(feature) {
   switch (feature.properties.permitdescription) {
-    case 'ALTERATION PERMIT' : return {color: '#fdc086'};
+    case 'ALTERATION PERMIT' : return {color: '#FCE883'};
   }
 };
 
 var AddStyle = function(feature) {
   switch (feature.properties.permitdescription) {
-    case 'ADDITION PERMIT' : return {color: '#A38A00'};
+    case 'ADDITION PERMIT' : return {color: '#A48D28'};
   }
 };
 
 
 var newStyle = function(feature) {
   switch (feature.properties.permitdescription) {
-    case 'NEW CONSTRUCTION PERMIT' : return {color: '#386cb0'};
+    case 'NEW CONSTRUCTION PERMIT' : return {color: '#48845C'};
   }
 };
 
@@ -701,10 +701,10 @@ NDropDown1("#pctGainF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
 NDropDown1("#pctChangeF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
 
 NDropDown2Bar("#S1", ResultStyle, results, FilterResults1, onEachFeatureStats2)
-NDropDown2Bar("#S2", ResultStyle, results, FilterResults2, onEachFeatureStats2)
+NDropDown2Bar("#S2", ResultStyle, results, FilterResults5, onEachFeatureStats2)
 NDropDown2Bar("#S3", ResultStyle, results, FilterResults3, onEachFeatureStats2)
-NDropDown2Bar("#S4", ResultStyle, results, FilterResults4, onEachFeatureStats2)
-NDropDown2Bar("#S5", ResultStyle, results, FilterResults5, onEachFeatureStats2)
+NDropDown2Bar("#S4", ResultStyle, results, FilterResults2, onEachFeatureStats2)
+NDropDown2Bar("#S5", ResultStyle, results, FilterResults4, onEachFeatureStats2)
 
 
 
