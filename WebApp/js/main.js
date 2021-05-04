@@ -803,7 +803,7 @@ ajaxEL = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data
     onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
-          {radius: 1})
+          {radius: 2})
     }
 }).addTo(map) 
 });
@@ -818,7 +818,7 @@ ajaxALT = function(dataset, mystyle, variable){$.ajax(dataset).done(function(dat
     onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
-          {radius: 1})
+          {radius: 2})
     }
 }).addTo(map) 
 });
@@ -833,7 +833,7 @@ ajaxADD = function(dataset, mystyle, variable){$.ajax(dataset).done(function(dat
     onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
-          {radius: 1})
+          {radius: 2})
     }
 }).addTo(map) 
 });
@@ -848,7 +848,7 @@ ajaxDEMO = function(dataset, mystyle, variable){$.ajax(dataset).done(function(da
     onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
-          {radius: 1})
+          {radius: 2})
     }
 }).addTo(map) 
 });
@@ -863,7 +863,7 @@ ajaxNC = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data
     onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
-          {radius: 1})
+          {radius: 2})
     }
 }).addTo(map) 
 });
@@ -878,7 +878,7 @@ ajaxP = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data)
     onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
-          {radius: 1})
+          {radius: 2})
     }
 }).addTo(map) 
 });
@@ -893,7 +893,7 @@ ajaxM = function(dataset, mystyle, variable){$.ajax(dataset).done(function(data)
     onEachFeature: onEachFeatureConst, 
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, 
-          {radius: 1})
+          {radius: 2})
     }
 }).addTo(map) 
 });

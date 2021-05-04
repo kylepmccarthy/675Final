@@ -205,13 +205,13 @@ p.main {
  .legendC li { float: left; margin-right: 10px; }
  .legendC span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 5px; border-radius: 50%; ;  }
  /* your colors */
- .legendC .Top { background-color: #A38A00; border-color: black; }
- .legendC .Two{ background-color: #fdc086; border-color: black;}
- .legendC .Three { background-color: #7fc97f; border-color: black;}
- .legendC .Four { background-color: #beaed4; border-color: black;}
- .legendC .Five{ background-color: #f0027f; border-color: black; }
- .legendC .Six{ background-color: #386cb0; border-color: black; }
- .legendC .Bottom{ background-color: #bf5b17; border-color: black; }
+ .legendC .Top { background-color: #A48D28; border-color: black; }
+ .legendC .Two{ background-color: #FCE883; border-color: black;}
+ .legendC .Three { background-color: #9C51B6; border-color: black;}
+ .legendC .Four { background-color: #B9D9EB; border-color: black;}
+ .legendC .Five{ background-color: #D982B5; border-color: black; }
+ .legendC .Six{ background-color: #48845C; border-color: black; }
+ .legendC .Bottom{ background-color: #90EE90; border-color: black; }
 
 
 
