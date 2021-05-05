@@ -31,7 +31,7 @@ var alteration1 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main
 var plum2 = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/PlumPost2.geojson "
 var Mechanical = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/Mechanical.geojson"
 
-var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/ScenAF.geojson"
+var results = "https://raw.githubusercontent.com/kylepmccarthy/675Final/main/Data/ScenA1.geojson"
 
 var featureGroups; 
 var featureEL;
@@ -702,8 +702,8 @@ NDropDown1("#pctChangeF", pctLossF, Grid, FilterMain, onEachFeatureStats1)
 
 NDropDown2Bar("#S1", ResultStyle, results, FilterResults1, onEachFeatureStats2)
 NDropDown2Bar("#S2", ResultStyle, results, FilterResults2, onEachFeatureStats2)
-NDropDown2Bar("#S3", ResultStyle, results, FilterResults3, onEachFeatureStats2)
-NDropDown2Bar("#S4", ResultStyle, results, FilterResults4, onEachFeatureStats2)
+NDropDown2Bar("#S3", ResultStyle, results, FilterResults4, onEachFeatureStats2)
+NDropDown2Bar("#S4", ResultStyle, results, FilterResults3, onEachFeatureStats2)
 NDropDown2Bar("#S5", ResultStyle, results, FilterResults5, onEachFeatureStats2)
 
 
